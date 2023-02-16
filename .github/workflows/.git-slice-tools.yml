@@ -79,14 +79,14 @@ env:
   # User email for git authentication and commit details on slice repo
   GIT_SLICE_SLICE_REPO_EMAIL: bot@gitstart.com
   # Personal Access Token for git authentication on slice repo
-  GIT_SLICE_SLICE_REPO_PASSWORD: ${{ secrets.GITSLICE_TOKEN }}
+  GIT_SLICE_SLICE_REPO_PASSWORD: ${{ secrets.GIT_SLICE_SLICE_REPO_PASSWORD }}
   # Array of glob patterns which are used to ignore files when syncing changes between 2 repos. ex: `['.git-slice.json', 'dev/*']`
   GIT_SLICE_SLICE_IGNORES: '[]'
   # Pattern for building branch name in upstream repo when pushing a branch in slice repo, git-slice-tools would replace '<branch_name>' with the name pushing branch. ex: 'dev/<branch_name>'
   GIT_SLICE_PUSH_BRANCH_NAME_TEMPLATE: '<branch_name>'
   # Regular expression which is used to validate commit messages
   GIT_SLICE_PUSH_COMMIT_MSG_REGEX: '.*'
-  GIT_SLICE_CHECKOUT_CACHED_KEY: ${{ secrets.GITSLICE_TOKEN }}
+  GIT_SLICE_CHECKOUT_CACHED_KEY: ${{ secrets.GIT_SLICE_UPSTREAM_REPO_CACHE_KEY }}
   # Array of labels which git-slice-tools will add into new PR. Ex: ex: '["gitstart","team/frontend-platform"]'
   GIT_SLICE_PR_LABELS: '["gitstart"]'
   # (`true` or `false`) git-slice-tools would raise new PR as draft PR or not
