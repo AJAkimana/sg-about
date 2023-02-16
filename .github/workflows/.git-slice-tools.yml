@@ -77,7 +77,7 @@ env:
   # Username for git authentication and commit details on slice repo
   GIT_SLICE_SLICE_REPO_USERNAME: gitstart
   # User email for git authentication and commit details on slice repo
-  GIT_SLICE_SLICE_REPO_EMAIL: bot@gitstart.com
+  GIT_SLICE_SLICE_REPO_EMAIL: gitstart@gitstart.com
   # Personal Access Token for git authentication on slice repo
   GIT_SLICE_SLICE_REPO_PASSWORD: ${{ secrets.GIT_SLICE_SLICE_REPO_PASSWORD }}
   # Array of glob patterns which are used to ignore files when syncing changes between 2 repos. ex: `['.git-slice.json', 'dev/*']`
