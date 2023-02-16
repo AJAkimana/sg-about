@@ -1,0 +1,45 @@
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# next.js
+.next
+out
+
+# production
+build
+
+# misc
+.DS_Store
+*.pem
+*.swp
+
+# debug
+*.log*
+
+# local env files
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+# cache
+public/data
+
+# Cypress screenshots
+cypress/screenshots
+
+# Generated service worker and map files
+public/*.map
+public/workbox-*.js
+public/sw.js
+
+# Generated feeds
+public/feed.rss.xml
+public/feed.atom.xml
+public/feed.json

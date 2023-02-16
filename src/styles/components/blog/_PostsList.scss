@@ -1,0 +1,5 @@
+.posts-list {
+    &__post {
+        margin-bottom: map-get($spacers, 5);
+    }
+}
