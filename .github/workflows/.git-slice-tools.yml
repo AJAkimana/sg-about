@@ -71,7 +71,7 @@ env:
   GIT_SLICE_UPSTREAM_REPO_PASSWORD: ${{ secrets.GITSLICE_TOKEN }}
   GIT_SLICE_SLICE_REPO_DIR: ./slice-repo
   # Http git url of slice repo, should be in this format : https://github.com/GitStartHQ/client-sourcegraph.git
-  GIT_SLICE_SLICE_REPO_URL: https://github.com/sourcegraph/about.git
+  GIT_SLICE_SLICE_REPO_URL: https://github.com/GitStartHQ/client-sourcegraph-about.git
   # Name of default branch of slice repo
   GIT_SLICE_SLICE_REPO_DEFAULT_BRANCH: main
   # Username for git authentication and commit details on slice repo
