@@ -23,3 +23,5 @@ jobs:
         run: pnpm run lint
       - name: Build production-ready site
         run: pnpm run build
+      - name: Prettier
+        run: pnpm run prettier:check
