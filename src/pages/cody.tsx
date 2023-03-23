@@ -4,6 +4,7 @@ import ChevronRightIcon from 'mdi-react/ChevronRightIcon'
 import Link from 'next/link'
 
 import { Badge, ContentSection, Heading, Layout } from '../components'
+import { DemoVideo } from '../components/CodyVideo'
 
 const CodyPage: FunctionComponent = () => (
     <Layout
@@ -17,9 +18,9 @@ const CodyPage: FunctionComponent = () => (
         displayChildrenUnderNav={true}
     >
         {/* Hero Section */}
-        <ContentSection parentClassName="!py-0" className="grid grid-cols-1 md:grid-cols-2">
-            <div className="max-w-[637px]">
-                <div className="flex gap-x-2">
+        <ContentSection parentClassName="!py-0" className="text-center">
+            <div className="mx-auto max-w-[637px]">
+                <div className="center flex items-center justify-center gap-x-2">
                     <Heading size="h6" className="text-white">
                         CODY
                     </Heading>
@@ -28,11 +29,11 @@ const CodyPage: FunctionComponent = () => (
                 <Heading size="h1" className="mt-2 text-white">
                     Read, write, and understand code 10x faster with AI
                 </Heading>
-                <Heading size="h3" className="mt-6 text-white">
+                <Heading size="h4" className="mt-6 !font-normal text-white">
                     Your {'{intelligent, code-aware, enterprise-ready}'} programmer’s assistant.
                 </Heading>
                 <Link
-                    href="https://sourcegraph.typeform.com/to/pIXTgwrd"
+                    href="https://sourcegraph.typeform.com/cody-signup"
                     title="Private beta access request form"
                     className="btn btn-inverted-primary mt-8"
                     target="_blank"
@@ -40,8 +41,13 @@ const CodyPage: FunctionComponent = () => (
                     Request access
                 </Link>
             </div>
-            <div className="mt-6 md:mt-0">
-                <img src="/cody/cody.svg" alt="Own Illustration" className="w-full max-w-[630px]" />
+            <div className="mx-auto mt-6 w-full md:mt-0">
+                <DemoVideo
+                    video="cody-demo-202303"
+                    splash={true}
+                    className="mx-auto mt-8 w-full max-w-[804px] rounded-lg bg-violet-750 drop-shadow-2xl"
+                    splashClassName="rounded-lg"
+                />
             </div>
         </ContentSection>
 
@@ -51,9 +57,10 @@ const CodyPage: FunctionComponent = () => (
             </Heading>
             <p className="mt-4 text-lg  text-gray-200">
                 Answer questions about both general programming topics and your specific codebase from right inside your
-                editor. Cody knows about your local code and can learn from all the code and documentation inside your
+                editor. Cody knows about your local code and can learn from the code graph and documentation inside your
                 organization.
             </p>
+            <img src="/cody/cody.svg" alt="Own Illustration" className="w-full max-w-[630px]" />
         </ContentSection>
 
         <ContentSection
@@ -62,11 +69,10 @@ const CodyPage: FunctionComponent = () => (
         >
             <div className="max-w-[529px]">
                 <Heading size="h2" className="!text-4xl text-white">
-                    Cody is now experimental
+                    Cody is experimental
                 </Heading>
                 <p className="mt-6 text-lg text-gray-200">
-                    Cody works with Sourcegraph’s precise code intelligence and code search to provide even better
-                    accurate results.
+                    Often magical, often frustratingly wrong...but getting better quickly.
                 </p>
             </div>
             <div className="flex max-w-[452px] flex-col justify-center border-t border-gray-500 pt-8 md:h-[232px] md:border-l md:border-t-0 md:pl-8 md:pt-0">
@@ -74,7 +80,7 @@ const CodyPage: FunctionComponent = () => (
                     Interested in deploying Cody for your team? Let us know.
                 </Heading>
                 <Link
-                    href="https://sourcegraph.typeform.com/to/pIXTgwrd"
+                    href="https://sourcegraph.typeform.com/cody-signup"
                     title="Private beta access request form"
                     className="btn mt-8 bg-transparent pl-0 text-white"
                     target="_blank"
