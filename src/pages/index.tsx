@@ -73,7 +73,7 @@ const features = [
     },
     {
         title: 'Code intelligence',
-        description: 'Navigate code, find references, see code owners, trace history, security, and more.',
+        description: 'Navigate code, find references, see code owners, trace history, and more.',
         image: '/home/code_intelligence.png',
     },
     {
@@ -167,14 +167,14 @@ const Home: FunctionComponent = () => (
                     text="Experimental"
                 />
                 <Heading className="mt-3 mb-4 text-white" size="h2">
-                    Cody AI
+                    Cody
                 </Heading>
                 <p className="mb-4 text-lg text-gray-200">
-                    Working with Cody, Sourcegraph’s new AI coding assistant, is like a having a senior engineer as a
-                    personal assistant who can search and read your codebase to find answers to your questions.
+                    Our new AI-powered coding assistant, Cody, answers code questions and writes code for you by reading
+                    your entire codebase and the code graph.
                 </p>
                 <Link href="/cody" title="Learn more about Cody" className="btn flex bg-transparent p-0 text-white">
-                    <ChevronRightIcon className="!mb-0 inline" />
+                    Request access <ChevronRightIcon className="!mb-0 inline" />
                 </Link>
             </div>
             <div
@@ -207,7 +207,7 @@ const Home: FunctionComponent = () => (
             />
             <div className="z-10 flex flex-1 flex-col md:pl-sm">
                 <div className="w-fit md:self-end">
-                    <Heading className="mb-[10px] text-white !text-[36px]" size="h2">
+                    <Heading className="mb-[10px] !text-[36px] text-white" size="h2">
                         Download Sourcegraph
                     </Heading>
                     <p className="mb-8 text-gray-200">For individual developers</p>
@@ -220,10 +220,15 @@ const Home: FunctionComponent = () => (
                     Sourcegraph for Enterprise
                 </Heading>
                 <p className="mb-8 max-w-[376px] text-gray-200">
-                    Get in touch to learn how organizations use Sourcegraph at Scale:
+                    Get in touch to learn how organizations use Sourcegraph at scale:
                 </p>
                 <div className="flex">
-                    <MeetWithProductExpertButton dark={true} requestInfo={true} buttonLocation={buttonLocation.body} buttonClassName="text-white btn-outline-white" />
+                    <MeetWithProductExpertButton
+                        dark={true}
+                        requestInfo={true}
+                        buttonLocation={buttonLocation.body}
+                        buttonClassName="text-white btn-outline-white"
+                    />
                     <MeetWithProductExpertButton
                         buttonClassName="text-white"
                         chevron={true}
