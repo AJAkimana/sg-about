@@ -1,0 +1,122 @@
+name: Labels flow
+
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled]
+
+jobs:
+  pr_requirement_comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'opened' }}
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `SourceGraph PR requires:
+            - [ ] Branch name: should have this format \`contractors/SG-<issue_number>\`
+            - [ ] Title: Should have ticket code as prefix \`[SG-<issue_number>] <title_content>\`
+            - [ ] Description: Please don't just copy ticket description since it doesn't contain any addition value but should contain at least 2 sections
+              - ##_Refs: 2 links \`SourceGraph Issue](link to SourceGraph issue)\` and \`[GitStart ticket](link to GitStart ticket)\`
+              - ##_Description: Short description about changes on this PR (and again... don't copy client ticket desc)
+              - ##_Test plan: A loose explanation of what you have done or implemented to test this
+            - [ ] Please remember to update PR label with correct state \`spec/...\` and \`code/....\`
+            - [ ] Please assign people this PR
+            - [ ] Please avoid to use force-push
+            - [ ] Please don't close PRs which already have reviews from other people
+            - [ ] Please check all checkboxes in comment from GitHub Bot to prove that you have read them
+
+            Thanks for joining us!!!
+            `
+            })
+  pr_review_comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'labeled' && (github.event.label.name == 'spec/ready for review' || github.event.label.name == 'code/ready for review') }}
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Heads up @raph941 @BikashSah999 - A \`ready for review\` label was applied to this pull request.
+              Some notes for devs:
+              - [ ] Please make sure CI checks are good.
+              - [ ] Please review your changes yourself by going through them on \`Files changed\` tab.
+              - [ ] Please give your reactions on last review comments, it would help reviewers a lot while doing rereview.
+              `
+            })
+  pr_need_changes_comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'labeled' && (github.event.label.name == 'spec/need changes' || github.event.label.name == 'code/need changes') }}
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Heads up dev - A \`need changes\` label was applied to this pull request.
+              Some notes for devs:
+              - [ ] Please make sure you understand all reviews. If not, please reach out to reviewers.
+              - [ ] Please give reactions on reviews, so you know which reviews you read. I suggest to add :eyes: to mark it as read and :thumbsup: to mark it as done.
+              - [ ] Please click \`Resolve conversation\` only after pushed the changes.
+              - [ ] Please add \`code/in progress\` or \`spec/in progress\` when starting to resolve reviews.
+              - [ ] Please add \`code/ready for review\` or \`spec/ready for review\` when pushed the changes.
+              `
+            })
+  pr_final_review_comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'labeled' && github.event.label.name == 'code/awaiting final approval' }}
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Heads up @phunguyenmurcul - \`code/awaiting final approval\` label was applied to this pull request.`
+            })
+  pr_merged_comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'labeled' && github.event.label.name == 'code/merged by client' }}
+    steps:
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            const currentPull = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            })
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `
+              Merged #${context.issue.number} into main.
+              Some notes for this state:
+              - [ ] Please make sure you logged time for this ticket.
+              - [ ] Please make sure you updated credits for this ticket.
+              `
+            })
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              state: 'closed',
+            })
+
+            await github.rest.git.deleteRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: `heads/${currentPull.data.head.ref}`
+            })
