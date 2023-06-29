@@ -25,35 +25,21 @@ type NavItem = NavLink | NavSection
 
 const NAV_ITEMS: NavItem[] = [
     {
-        name: 'Product',
+        name: 'Products',
         links: [
+            {
+                name: 'Cody',
+                href: '/cody',
+            },
             {
                 name: 'Code Search',
                 href: '/code-search',
             },
-            {
-                name: 'Batch Changes',
-                href: '/batch-changes',
-            },
-            {
-                name: 'Code Insights',
-                href: '/code-insights',
-            },
-            {
-                name: 'Cody (AI)',
-                href: '/cody',
-                badgeText: 'New',
-            },
-            {
-                name: 'Own',
-                href: '/own',
-                badgeText: 'New',
-            },
         ],
     },
     {
-        name: 'App',
-        href: '/app',
+        name: 'Pricing',
+        href: '/pricing',
     },
     {
         name: 'Enterprise',
@@ -63,30 +49,31 @@ const NAV_ITEMS: NavItem[] = [
                 href: '/cloud',
             },
             {
-                name: 'Pricing',
-                href: '/pricing',
-            },
-            {
                 name: 'Customer stories',
                 href: '/case-studies',
             },
+        ],
+    },
+    {
+        name: 'Resources',
+        links: [
             {
                 name: 'Resources library',
                 href: '/resources',
+            },
+            {
+                name: 'Blog',
+                href: '/blog',
+            },
+            {
+                name: 'Docs',
+                href: 'https://docs.sourcegraph.com',
             },
         ],
     },
     {
         name: 'Search public code',
         href: 'https://sourcegraph.com',
-    },
-    {
-        name: 'Docs',
-        href: 'https://docs.sourcegraph.com',
-    },
-    {
-        name: 'Blog',
-        href: '/blog',
     },
 ]
 
@@ -188,7 +175,7 @@ const NavItemMenu: React.FunctionComponent<
                                         <Link
                                             href={link.href}
                                             className={classNames(
-                                                'block px-4 py-2 text-sm',
+                                                'block px-4 py-2 text-base',
                                                 menuItemClassName,
                                                 active && menuItemActiveClassName
                                             )}

@@ -31,6 +31,15 @@ export { TwoColumnSection } from './TwoColumnSection'
 export { Video } from './Video'
 export { YouTube } from './YouTube'
 export { Tooltip } from './Tooltip'
+export { TwitterEmbed } from './EmbedTweet'
+export {
+    CodeCompletions,
+    CodeSmells,
+    DebuggingAssistance,
+    ExplainCode,
+    SummarizeCode,
+    UnitTest,
+} from './cody/cody-illustrations'
 
 export { AuthenticateModalContent } from './AuthenticateModalContent'
 export { ExternalsAuth } from './cta/ExternalsAuth'
@@ -54,17 +63,6 @@ export { Layout } from './Layout/Layout'
 export { ContentPage } from './ContentPage'
 export { GatedResourceLayout } from './GatedResourceLayout' // Webinars, Guides, Reports
 
-// Pricing
-export { PricingPlanFeature, PricingPlan } from './Pricing'
-export {
-    type FeatureCluster,
-    ENTERPRISE_STARTER_FEATURES_OVERVIEW as BIZ_FEATURES_OVERVIEW,
-    ENTERPRISE_FEATURES_OVERVIEW,
-    ALL_FEATURES_COMPARED_DATA,
-    SPOTLIGHT_FEATURE_INFO,
-    ALL_FEATURE_INFO,
-} from './Pricing'
-
 // Resources
 export { Filters, type Filter, Card, ResourceCard, resourceItems, type Resource, useFilters } from './Resources'
 
@@ -76,3 +74,6 @@ export { CountDown } from './Starship/CountDown'
 
 // Own
 export { FeatureRoadMap } from './Own'
+
+// Cody
+export { CodyFeatureCard } from './CodyFeatureCard'
