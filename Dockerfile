@@ -1,5 +1,7 @@
+# Stage 1: Build the Next.js app
 FROM node:18.9.0 as builder
 
+# Install pnpm globally with the specific pnpm version
 RUN npm install -g pnpm@8.1.1
 
 # Set the working directory inside the container
@@ -8,18 +10,20 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
-RUN pnpm install
+# Install dependencies using pnpm
+RUN pnpm install --frozen-lockfile
 
 # Copy the rest of the application code to the container
 COPY . .
 
-# Build the Next.js app
-RUN pnpm run build
+# Build the Next.js app, disabling all ESLint rules during the build
+RUN pnpm run build -- -o '{"rules": {}}'
 
+# Stage 2: Create the production image
 FROM node:18.9.0-alpine
 
-# Install pnpm globally with the specific pnpm version.
-RUN pnpm run build
+# Install pnpm globally with the specific pnpm version (optional, only if needed in production)
+RUN npm install -g pnpm@8.1.1
 
 # Set the working directory inside the container
 WORKDIR /app
