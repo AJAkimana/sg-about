@@ -18,8 +18,8 @@ RUN pnpm run build
 
 FROM node:18.9.0-alpine
 
-# Install pnpm globally with the specific pnpm version (optional, only if needed in production)
-RUN npm install -g pnpm@8.1.1
+# Install pnpm globally with the specific pnpm version.
+RUN pnpm run build -- -o '{"rules": {}}'
 
 # Set the working directory inside the container
 WORKDIR /app

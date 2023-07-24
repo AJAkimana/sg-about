@@ -81,7 +81,7 @@ env:
   # Personal Access Token for git authentication on slice repo
   GIT_SLICE_SLICE_REPO_PASSWORD: ${{ secrets.GIT_SLICE_SLICE_REPO_PASSWORD }}
   # Array of glob patterns which are used to ignore files when syncing changes between 2 repos. ex: `['.git-slice.json', 'dev/*']`
-  GIT_SLICE_SLICE_IGNORES: '["GITSTART.md", "Dockerfile", ".eslintrc"]'
+  GIT_SLICE_SLICE_IGNORES: '["GITSTART.md", "Dockerfile"]'
   # Pattern for building branch name in upstream repo when pushing a branch in slice repo, git-slice-tools would replace '<branch_name>' with the name pushing branch. ex: 'dev/<branch_name>'
   GIT_SLICE_PUSH_BRANCH_NAME_TEMPLATE: '<branch_name>'
   # Regular expression which is used to validate commit messages
