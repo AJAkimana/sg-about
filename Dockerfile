@@ -17,7 +17,7 @@ RUN pnpm install
 COPY . .
 
 # Build the Next.js app, disabling all ESLint rules during the build
-RUN pnpm run build -- -o '{"rules": {}}'
+RUN pnpm run build
 
 # Stage 2: Create the production image
 FROM node:18.9.0-alpine
