@@ -18,3 +18,13 @@ pnpm dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000) in your web browser.
+
+### Docker image
+
+```sh
+# Build
+docker build -t sourcegraph/about .
+
+# Start
+docker run -d --name sourcegraph/about -p 3001:3000 sourcegraph-about
+```
