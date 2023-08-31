@@ -23,32 +23,16 @@ on:
         description: 'Job'
         type: choice
         options:
-          - push-a-branch
           - pull-the-main-branch
           - pull-a-branch
-          - pull-a-review
           - pull-an-issue
         required: true
       branch:
-        description: '[push-a-branch][pull-a-branch] Which branch should be pushed/pulled?'
+        description: '[pull-a-branch] Which branch should be pulled?'
         default: ''
-      commitMessage:
-        description: '[push-a-branch] Commit message for the client?'
-      overide:
-        type: boolean
-        description: '[push-a-branch] Override previous push (force push)?'
-        default: false
-      pushPr:
-        type: boolean
-        description: '[push-a-branch] Create a PR with the same title and body on the client side?'
-        default: false
       targetBranch:
         description: '[pull-a-branch] Raise a PR to merge the pulled upstream branch into this branch'
         default: ''
-      prNumber:
-        description: '[pull-a-review] PR number on slice repo'
-      prReivewLink:
-        description: '[pull-a-review] Link to a PR review or comment on upstream repo (GitHub only)'
       upstreamIssue:
         description: '[pull-an-issue] Upstream issue number or link to any issue which upstream account can access'
       sliceIssue:
@@ -71,7 +55,7 @@ env:
   GIT_SLICE_UPSTREAM_REPO_PASSWORD: ${{ secrets.GIT_SLICE_UPSTREAM_REPO_PASSWORD }}
   GIT_SLICE_SLICE_REPO_DIR: ./slice-repo
   # Http git url of slice repo, should be in this format : https://github.com/GitStartHQ/client-sourcegraph.git
-  GIT_SLICE_SLICE_REPO_URL: https://github.com/GitStartHQ/client-sourcegraph-about.git
+  GIT_SLICE_SLICE_REPO_URL: ${{ github.repositoryUrl }}
   # Name of default branch of slice repo
   GIT_SLICE_SLICE_REPO_DEFAULT_BRANCH: main
   # Username for git authentication and commit details on slice repo
@@ -93,8 +77,13 @@ env:
   GIT_SLICE_PR_DRAFT: true
   # (`true` or `false`) Use open source flow or not
   GIT_SLICE_OPEN_SOURCE_FLOW: false
+  # Http git url of open source repo, should be in this format : https://github.com/cypress.io/cypress.git, please use empty string "" if it's not
+  GIT_SLICE_OPEN_SOURCE_URL: ''
   # (`git-logs` or `pr-assignees` or `none`) Where to get co-authors for adding into open source commit message
-  GIT_SLICE_OPEN_SOURCE_AUTO_CO_AUTHORS_COMMITS: 'none'
+  GIT_SLICE_OPEN_SOURCE_AUTO_CO_AUTHORS_COMMITS: none
+  # Use GitStart gateway
+  GIT_SLICE_GITSTART_GATEWAY_TOKEN: ${{ secrets.github_token }}
+  GIT_SLICE_GITSTART_GATEWAY_URL: https://gateway.gitstart.com/graphql
 
 jobs:
   git-slice-checkout:
@@ -117,7 +106,18 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools CHECKOUT
-        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.0.0
+        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.5.0
+
+      - name: Failure report Slack
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": "git-slice-checkout failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
 
   git-slice-pull:
     runs-on: ubuntu-latest
@@ -144,7 +144,18 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL
-        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.0.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.5.0
+
+      - name: Failure report Slack
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": "git-slice-pull failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
 
   git-slice-pull-branch:
     runs-on: ubuntu-latest
@@ -164,31 +175,21 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL-BRANCH
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.0.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.5.0
         with:
           branch: ${{ github.event.inputs.branch }}
           target-branch: ${{ github.event.inputs.targetBranch }}
 
-  git-slice-pull-review:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
-    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'pull-a-review' }}
-
-    steps:
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Failure report Slack
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
         with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: git-slice-tools PULL-REVIEW
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-review@v2.0.0
-        with:
-          pr-number: ${{ github.event.inputs.prNumber }}
-          from: ${{ github.event.inputs.prReivewLink }}
+          payload: |
+            {
+              "text": "git-slice-pull-branch failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
 
   # Trigger git-slice pull-review action with pull request comment: /git-slice pull-review -from https://github.com/sourcegraph/sourcegraph/pull/37919#pullrequestreview-1025518547
   # -from : Link to pull request review or comment (GitHub only)
@@ -208,32 +209,31 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL-REVIEW-COMMENT (trigger by comments)
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.0.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.5.0
 
-  git-slice-push:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
-    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'push-a-branch' }}
-
-    needs: [git-slice-pull]
-
-    steps:
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Failure report Slack
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
         with:
-          node-version: ${{ matrix.node-version }}
+          payload: |
+            {
+              "text": "git-slice-pull-review-comment failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
 
-      - name: git-slice-tools PUSH
-        uses: GitStartHQ/git-slice-tools-private/actions/push@v2.0.0
+      - name: Failure report Comment reaction
+        uses: actions/github-script@v6
+        if: failure() || cancelled()
         with:
-          branch: ${{ github.event.inputs.branch }}
-          message: ${{ github.event.inputs.commitMessage }}
-          force-push: ${{ github.event.inputs.overide }}
-          push-pr: ${{ github.event.inputs.pushPr }}
+          result-encoding: string
+          script: |
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.comment.id,
+              content: '-1'
+            });
 
   # Trigger git-slice push action with pull request comment: /git-slice push -m "<commit message>" [-f] [-pr]
   # -f : Override previous push (force push)
@@ -256,7 +256,31 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PUSH (trigger by comments)
-        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.0.0
+        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.5.0
+
+      - name: Failure report Slack
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": "git-slice-push-comment failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
+
+      - name: Failure report Comment reaction
+        uses: actions/github-script@v6
+        if: failure() || cancelled()
+        with:
+          result-encoding: string
+          script: |
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: context.payload.comment.id,
+              content: '-1'
+            });
 
   git-slice-pull-issue:
     runs-on: ubuntu-latest
@@ -274,8 +298,19 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL-ISSUE
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.0.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.5.0
         with:
           upstream-issue: ${{ github.event.inputs.upstreamIssue }}
           slice-issue: ${{ github.event.inputs.sliceIssue }}
           trigger-by: ${{ github.actor }}
+
+      - name: Failure report Slack
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": "git-slice-pull-issue failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
