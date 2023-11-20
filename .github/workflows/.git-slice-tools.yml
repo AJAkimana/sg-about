@@ -79,12 +79,11 @@ env:
   GIT_SLICE_OPEN_SOURCE_FLOW: false
   # Http git url of open source repo, should be in this format : https://github.com/cypress.io/cypress.git, please use empty string "" if it's not
   GIT_SLICE_OPEN_SOURCE_URL: ''
-  # (`git-logs` or `pr-assignees` or `none`) Where to get co-authors for adding into open source commit message
-  GIT_SLICE_OPEN_SOURCE_AUTO_CO_AUTHORS_COMMITS: none
-  # Use GitStart gateway
+  # (`git-logs` or `pr-assignees` or `none`) Where to get co-authors for adding into commit messages
+  GIT_SLICE_AUTO_CO_AUTHORS_COMMITS: none
   GIT_SLICE_GITSTART_GATEWAY_TOKEN: ${{ secrets.github_token }}
   GIT_SLICE_GITSTART_GATEWAY_URL: https://gateway.gitstart.com/graphql
-
+  # Use GitStart gateway (If your repo has `Branch protection rule`, please add `gitstart-app` into `Allow specified actors to bypass required pull requests`)
 jobs:
   git-slice-checkout:
     runs-on: ubuntu-latest
@@ -106,7 +105,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools CHECKOUT
-        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.5.5
+        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.5.6
 
       - name: Failure report Slack
         if: failure()
@@ -144,7 +143,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL
-        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.5.5
+        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.5.6
 
       - name: Failure report Slack
         if: failure()
@@ -175,7 +174,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL-BRANCH
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.5.5
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.5.6
         with:
           branch: ${{ github.event.inputs.branch }}
           target-branch: ${{ github.event.inputs.targetBranch }}
@@ -209,7 +208,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL-REVIEW-COMMENT (trigger by comments)
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.5.5
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.5.6
 
       - name: Failure report Slack
         if: failure()
@@ -256,7 +255,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PUSH (trigger by comments)
-        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.5.5
+        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.5.6
 
       - name: Failure report Slack
         if: failure()
@@ -298,7 +297,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL-ISSUE
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.5.5
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.5.6
         with:
           upstream-issue: ${{ github.event.inputs.upstreamIssue }}
           slice-issue: ${{ github.event.inputs.sliceIssue }}
