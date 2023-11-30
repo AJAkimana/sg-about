@@ -93,11 +93,6 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
-        with:
-          access_token: ${{ github.token }}
-
       - name: Use Node.js ${{ matrix.node-version }}
         if: steps.cache-repos.outputs.cache-hit != 'true'
         uses: actions/setup-node@v3
@@ -105,7 +100,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools CHECKOUT
-        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.5.6
+        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.5.7
 
       - name: Failure report Slack
         if: failure()
@@ -143,7 +138,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL
-        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.5.6
+        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.5.7
 
       - name: Failure report Slack
         if: failure()
@@ -174,7 +169,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL-BRANCH
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.5.6
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.5.7
         with:
           branch: ${{ github.event.inputs.branch }}
           target-branch: ${{ github.event.inputs.targetBranch }}
@@ -208,7 +203,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL-REVIEW-COMMENT (trigger by comments)
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.5.6
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.5.7
 
       - name: Failure report Slack
         if: failure()
@@ -255,7 +250,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PUSH (trigger by comments)
-        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.5.6
+        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.5.7
 
       - name: Failure report Slack
         if: failure()
@@ -297,7 +292,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: git-slice-tools PULL-ISSUE
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.5.6
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.5.7
         with:
           upstream-issue: ${{ github.event.inputs.upstreamIssue }}
           slice-issue: ${{ github.event.inputs.sliceIssue }}
