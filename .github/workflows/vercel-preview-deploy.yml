@@ -1,0 +1,82 @@
+name: Deploy Vercel Preview
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.QA_VERCEL_USER_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.QA_VERCEL_PROJECT_ID }}
+
+on:
+  pull_request:
+    types: [labeled, unlabeled]
+
+jobs:
+  Deploy-Preview:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action == 'labeled' && (github.event.label.name == 'code/ready for review' || github.event.label.name == 'Needs QA' || github.event.label.name == 'QA Retest') }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: true
+
+      - name: Install Vercel CLI
+        run: pnpm install --global vercel
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.QA_VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.QA_VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        id: deploy-step
+        run: |
+          DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.QA_VERCEL_TOKEN }} | grep -o 'https://[^ ]*.vercel.app' | head -n1)
+          echo "deploymentUrl=$DEPLOY_URL" >> $GITHUB_ENV
+
+      - name: Comment URL to PR
+        uses: actions/github-script@v6
+        env:
+          deploymentUrl: ${{ env.deploymentUrl }}
+        with:
+          script: |
+            // Get pull requests that are open for the current ref.
+            const pullRequests = await github.rest.pulls.list({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+                head: `${context.repo.owner}:${context.ref.replace('refs/heads/', '')}`
+            })
+
+            // Set issue number for following calls from context (if on a pull request event) or from the above variable.
+            const issueNumber = context.issue.number || pullRequests.data[0].number
+
+            // Retrieve existing bot comments for the PR
+            const {data: comments} = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+            })
+            const botComment = comments.find(comment => {
+                return comment.user.type === 'Bot' && comment.body.includes('PR Preview Deployed at')
+            })
+
+            const output = "PR Preview Deployed at " + process.env.deploymentUrl
+
+            // If we have a comment, update it, otherwise create a new one
+            if (botComment) {
+                github.rest.issues.updateComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    comment_id: botComment.id,
+                    body: output
+                })
+            } else {
+                github.rest.issues.createComment({
+                    issue_number: issueNumber,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    body: output
+                })
+            }
