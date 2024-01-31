@@ -171,7 +171,7 @@ const llmSupport = [
         competitor: '$20 / user / month',
         competitor_details: '',
         view_competitor_details: false,
-    }
+    },
 ]
 
 const contextSupport = [
