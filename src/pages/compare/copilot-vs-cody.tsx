@@ -210,7 +210,7 @@ const pricingSupport = [
         competitor: '$10 / user / month',
         competitor_details: '',
         view_competitor_details: false,
-    },
+    }
 ]
 
 const GetStartedButton: FunctionComponent<{ className?: string }> = ({ className }) => {

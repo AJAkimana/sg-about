@@ -41,7 +41,7 @@ func (opts UpdateCustomerOptions) Validate() error {`,
     '}',
 ]
 
-export const CodyAnimation: FunctionComponent<{ className?: string }> = ({ className }) => {
+export const CodyAnimation: FunctionComponent<{className?: string}> = ({className}) => {
     const [startAnimation, setStartAnimation] = useState(false)
     const [nextLine, setNextLine] = useState(false)
     const [showSuggestion, setShowSuggestion] = useState(false)
@@ -87,10 +87,7 @@ export const CodyAnimation: FunctionComponent<{ className?: string }> = ({ class
 
     return (
         <>
-            <div
-                className={classNames('relative overflow-hidden md:overflow-visible', className)}
-                ref={codyAnimationRef}
-            >
+            <div className={classNames('relative overflow-hidden md:overflow-visible', className)} ref={codyAnimationRef}>
                 <div className="relative left-[81px] mx-auto flex min-h-[412px] w-[728px] rounded-md border border-[#343A4D] bg-[#191B21] py-4 pl-4 text-sm leading-[19.6px] md:left-[0px]">
                     <SideSection
                         activeLine={activeLine}

@@ -262,7 +262,7 @@ const Resources: FunctionComponent = () => {
                     </div>
                 </div>
             </ContentSection>
-            <CodyCta source="Resources Page" />
+            <CodyCta source="Resources Page"/>
         </Layout>
     )
 }

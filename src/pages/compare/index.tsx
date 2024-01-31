@@ -143,7 +143,7 @@ const ComparePage: FunctionComponent = () => (
                         Autocomplete <MdCheck className="inline-block h-6 w-6 fill-violet-400" />
                     </li>
                     <li className="mb-1.5 flex items-center justify-between">
-                        Security vulnerability scanning <MdCheck className="h-6 w-6 fill-violet-400" />
+                    Security vulnerability scanning <MdCheck className="h-6 w-6 fill-violet-400" />
                     </li>
                 </ul>
             </div>
@@ -260,8 +260,7 @@ const ComparePage: FunctionComponent = () => (
             <div className="col-span mr-10 pb-5 pt-10">
                 <h2 className="mb-3 text-3xl">Cody vs Codeium</h2>
                 <p className="mb-5 text-gray-500">
-                    Codeium is an AI assistant that uses in-house built models and infrastructure to provide code
-                    completion, chat, and search. Codeium has trained models on over 70 programming langugages.
+                    Codeium is an AI assistant that uses in-house built models and infrastructure to provide code completion, chat, and search. Codeium has trained models on over 70 programming langugages.
                 </p>
                 <Link className="btn btn-primary text-lg" href="/compare/codeium-vs-cody">
                     See full comparison

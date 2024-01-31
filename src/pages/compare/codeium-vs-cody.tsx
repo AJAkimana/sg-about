@@ -55,7 +55,7 @@ const featureSupport = [
         competitor: false,
         competitor_details: '',
         view_competitor_details: false,
-    },
+    }
 ]
 
 const ideSupport = [
@@ -210,7 +210,7 @@ const pricingSupport = [
         competitor: '$15 / user / month',
         competitor_details: '',
         view_competitor_details: false,
-    },
+    }
 ]
 
 const GetStartedButton: FunctionComponent<{ className?: string }> = ({ className }) => {
@@ -256,21 +256,15 @@ const CompareCopilotPage: FunctionComponent = () => (
                 competitorIcon="/assets/compare/codeium.svg"
             >
                 <p>
-                    Codeium is an AI coding extension that provides code completion, search, and chat for over 70
-                    programming languages. It is available for many popular IDEs including Visual Studio Code,
-                    JetBrains, Visual Studio, and others.
+                    Codeium is an AI coding extension that provides code completion, search, and chat for over 70 programming languages. It is available for many popular IDEs including Visual Studio Code, JetBrains, Visual Studio, and others. 
                 </p>
 
                 <p>
-                    Codeium differentiates itself from other AI coding tools by training in-house models on various
-                    programming languages, while also providing support for popular LLMs like GPT-4.
+                    Codeium differentiates itself from other AI coding tools by training in-house models on various programming languages, while also providing support for popular LLMs like GPT-4.
                 </p>
                 <p>
                     <strong className="inline-block rounded-sm bg-blue-100 px-2 py-1 text-blue-500">TL;DR:</strong>{' '}
-                    Codeium is a code AI extension that provides code completion, search, and chat for over 70
-                    programming languages by training in-house models. Cody is a good choice for users who want more
-                    transparency and choice for the model being used, whereas Codeium has more extensive IDE support
-                    today.
+                    Codeium is a code AI extension that provides code completion, search, and chat for over 70 programming languages by training in-house models. Cody is a good choice for users who want more transparency and choice for the model being used, whereas Codeium has more extensive IDE support today.
                 </p>
             </CompareHero>
         }

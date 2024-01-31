@@ -26,7 +26,7 @@ export const CodyImageTab: FunctionComponent<{
         <ContentSection
             parentClassName="!px-0 !pb-0"
             className={classNames(
-                ' h-[auto] overflow-hidden border-y border-white border-opacity-20 bg-violet-700 p-6 md:rounded-lg md:border md:py-0  md:pt-8 md:pb-0 md:pl-[60px]',
+                ' h-[auto] overflow-hidden border-y border-white border-opacity-20 bg-violet-700 md:rounded-lg md:border p-6 md:py-0  md:pt-8 md:pb-0 md:pl-[60px]',
                 {
                     'h-[1080px] md:h-auto': isSmallTablet,
                 }
