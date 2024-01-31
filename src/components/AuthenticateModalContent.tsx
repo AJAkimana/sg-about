@@ -12,7 +12,9 @@ interface Props {
 
 export const AuthenticateModalContent: FunctionComponent<Props> = ({ source, plan = 'free' }) => (
     <div>
-        <Heading size="h4" className="text-lg text-gray-600 font-semibold">Sign up to get free access</Heading>
+        <Heading size="h4" className="text-lg font-semibold text-gray-600">
+            Sign up to get free access
+        </Heading>
         <ExternalsAuth
             authProvider="github"
             label="Continue With GitHub"

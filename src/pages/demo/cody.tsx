@@ -266,7 +266,7 @@ const DemoCodyPage: FunctionComponent = () => {
                     </div>
                 </div>
             </ContentSection>
-            <CodyCta source='cody demo page' />
+            <CodyCta source="cody demo page" />
         </Layout>
     )
 }

@@ -1,0 +1,35 @@
+name: Sonarqube
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarqube:
+    name: Sonarqube
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: SonarQube Scan PR
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          echo "Scanning PR $PR_NUMBER"
+          cat << EOF >> sonar-project.properties
+          sonar.pullrequest.base=$BASE_BRANCH
+          sonar.pullrequest.branch=$HEAD_BRANCH
+          sonar.pullrequest.key=$PR_NUMBER
+          EOF
+        env:
+          PR_NUMBER: ${{ github.event.number }}
+          HEAD_BRANCH: ${{ github.head_ref }}
+          BASE_BRANCH: ${{ github.base_ref }}
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}

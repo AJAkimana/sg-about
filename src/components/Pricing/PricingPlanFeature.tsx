@@ -20,7 +20,9 @@ export const PricingPlanFeature: FunctionComponent<Props> = ({ feature, tag: Tag
             <div
                 className={classNames(
                     'text-sm leading-[20px]',
-                    feature.label === 'Guardrails' || feature.label === 'Bring your own LLM' ? 'text-[#5E6E8C]' : 'text-[#343A4D]',
+                    feature.label === 'Guardrails' || feature.label === 'Bring your own LLM'
+                        ? 'text-[#5E6E8C]'
+                        : 'text-[#343A4D]',
                     className
                 )}
             >
