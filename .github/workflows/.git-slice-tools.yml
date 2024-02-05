@@ -87,24 +87,23 @@ env:
 jobs:
   git-slice-checkout:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
+    concurrency:
+      group: upstream-repo-checkout
+      cancel-in-progress: false
     steps:
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         if: steps.cache-repos.outputs.cache-hit != 'true'
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
 
       - name: git-slice-tools CHECKOUT
-        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.6.6
+        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.6.8
 
       - name: Failure report Slack
         if: failure()
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.25.0
+
         with:
           payload: |
             {
@@ -115,10 +114,9 @@ jobs:
 
   git-slice-pull:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
+    concurrency:
+      group: upstream-repo-pull
+      cancel-in-progress: false
 
     if: |
       ${{
@@ -132,17 +130,18 @@ jobs:
     needs: [git-slice-checkout]
 
     steps:
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
 
       - name: git-slice-tools PULL
-        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.6.6
+        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.6.8
 
       - name: Failure report Slack
         if: failure()
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.25.0
+
         with:
           payload: |
             {
@@ -154,29 +153,26 @@ jobs:
   git-slice-pull-branch:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'pull-a-branch' }}
 
     needs: [git-slice-pull]
 
     steps:
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
 
       - name: git-slice-tools PULL-BRANCH
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.6.6
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.6.8
         with:
           branch: ${{ github.event.inputs.branch }}
           target-branch: ${{ github.event.inputs.targetBranch }}
 
       - name: Failure report Slack
         if: failure()
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.25.0
+
         with:
           payload: |
             {
@@ -190,24 +186,21 @@ jobs:
   git-slice-pull-review-comment:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     if: ${{ github.event_name == 'issue_comment' && startsWith(github.event.comment.body, '/git-slice pull-review ') }}
 
     steps:
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
 
       - name: git-slice-tools PULL-REVIEW-COMMENT (trigger by comments)
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.6.6
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.6.8
 
       - name: Failure report Slack
         if: failure()
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.25.0
+
         with:
           payload: |
             {
@@ -235,26 +228,23 @@ jobs:
   git-slice-push-comment:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     if: ${{ github.event_name == 'issue_comment' && startsWith(github.event.comment.body, '/git-slice push') }}
 
     needs: [git-slice-pull]
 
     steps:
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
 
       - name: git-slice-tools PUSH (trigger by comments)
-        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.6.6
+        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.6.8
 
       - name: Failure report Slack
         if: failure()
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.25.0
+
         with:
           payload: |
             {
@@ -279,20 +269,16 @@ jobs:
   git-slice-pull-issue:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'pull-an-issue' }}
 
     steps:
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
 
       - name: git-slice-tools PULL-ISSUE
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.6.6
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.6.8
         with:
           upstream-issue: ${{ github.event.inputs.upstreamIssue }}
           slice-issue: ${{ github.event.inputs.sliceIssue }}
@@ -300,7 +286,8 @@ jobs:
 
       - name: Failure report Slack
         if: failure()
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.25.0
+
         with:
           payload: |
             {
