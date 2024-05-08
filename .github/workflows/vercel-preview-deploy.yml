@@ -5,7 +5,9 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.QA_VERCEL_PROJECT_ID }}
 
 on:
-  push
+  pull_request:
+    branches:
+      - '*'
 
 jobs:
   Deploy-Preview:
