@@ -6,8 +6,8 @@ env:
 
 on:
   pull_request:
-    branches:
-      - '*'
+    types:
+      - synchronize
 
 jobs:
   Deploy-Preview:
