@@ -17,6 +17,8 @@ on:
           - pull-default-branch
           - pull-a-branch
           - pull-an-issue
+          - pickup-push
+          - pickup-pull
         required: true
       branch:
         description:
@@ -32,6 +34,8 @@ on:
         description: '[pull-an-issue] Upstream issue number or link to any issue which upstream account can access'
       sliceIssue:
         description: '[pull-an-issue] Slice issue number to update (optional)'
+      operationId:
+        description: '[pickup-push][pickup-pull] Push/Pull operation Id'
 
 # Terms:
 # - Upstream repo: client repo or forked repo in open source flow
@@ -86,7 +90,11 @@ jobs:
       group: upstream-repo-pull-default-branch
       cancel-in-progress: false
 
-    if: ${{ github.event_name != 'issue_comment' }}
+    if: |
+      ${{
+        github.event_name != 'issue_comment' && 
+        (github.event_name != 'workflow_dispatch' || github.event.inputs.job == 'pull-default-branch' || github.event.inputs.job == 'pull-a-branch')
+      }}
 
     steps:
       - name: Use Node.js
@@ -95,24 +103,16 @@ jobs:
           node-version: 20.x
 
       - name: git-slice-tools CHECKOUT
-        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.6.11
-
-      - name: Failure report Slack
-        if: failure()
-        uses: slackapi/slack-github-action@v1.25.0
-        with:
-          payload: |
-            {
-              "text": "git-slice-pull failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
+        id: checkout
+        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.7.0
 
       - name: git-slice-tools PULL
-        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.6.11
+        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.7.0
+        env:
+          GIT_SLICE_TOOLS_IGNORE_SETUP: ${{ steps.checkout.outputs.fromCache != 'true' }}
 
       - name: Failure report Slack
-        if: failure()
+        if: failure() || cancelled()
         uses: slackapi/slack-github-action@v1.25.0
         with:
           payload: |
@@ -136,13 +136,13 @@ jobs:
           node-version: 20.x
 
       - name: git-slice-tools PULL-BRANCH
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.6.11
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.7.0
         with:
           branch: ${{ github.event.inputs.branch }}
           target-branch: ${{ github.event.inputs.targetBranch }}
 
       - name: Failure report Slack
-        if: failure()
+        if: failure() || cancelled()
         uses: slackapi/slack-github-action@v1.25.0
         with:
           payload: |
@@ -168,10 +168,10 @@ jobs:
           node-version: 20.x
 
       - name: git-slice-tools PULL-REVIEW-COMMENT (trigger by comments)
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.6.11
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.7.0
 
       - name: Failure report Slack
-        if: failure()
+        if: failure() || cancelled()
         uses: slackapi/slack-github-action@v1.25.0
         with:
           payload: |
@@ -211,47 +211,30 @@ jobs:
           node-version: 20.x
 
       - name: Check PR
-        uses: GitStartHQ/git-slice-tools-private/actions/get-pr-details-for-issue-comment@v2.6.11
-        id: check-pr
+        uses: GitStartHQ/git-slice-tools-private/actions/get-pr-details-for-issue-comment@v2.7.0
+        id: push-details
         with:
           ignoredBranches: ${{ env.GIT_SLICE_SLICING_NON_DEFAULT_BRANCHES && env.GIT_SLICE_SLICING_NON_DEFAULT_BRANCHES || '[]' }}
 
       - name: git-slice-tools CHECKOUT
-        if: ${{ steps.check-pr.outputs.shouldContinue == 'true' }}
-        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.6.11
-
-      - name: Failure report Slack
-        if: failure()
-        uses: slackapi/slack-github-action@v1.25.0
-        with:
-          payload: |
-            {
-              "text": "git-slice-push-comment failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
+        if: ${{ steps.push-details.outputs.shouldContinue == 'true' }}
+        id: checkout
+        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.7.0
 
       - name: git-slice-tools PULL
-        if: ${{ steps.check-pr.outputs.shouldContinue == 'true' }}
-        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.6.11
-
-      - name: Failure report Slack
-        if: failure()
-        uses: slackapi/slack-github-action@v1.25.0
-        with:
-          payload: |
-            {
-              "text": "git-slice-push-comment failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            }
+        if: ${{ steps.push-details.outputs.shouldContinue == 'true' }}
+        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.7.0
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
+          GIT_SLICE_TOOLS_IGNORE_SETUP: ${{ steps.checkout.outputs.fromCache != 'true' }}
 
       - name: git-slice-tools PUSH (trigger by comments)
-        if: ${{ steps.check-pr.outputs.shouldContinue == 'true' }}
-        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.6.11
+        if: ${{ steps.push-details.outputs.shouldContinue == 'true' }}
+        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.7.0
+        env:
+          GIT_SLICE_TOOLS_IGNORE_SETUP: true
 
       - name: Failure report Slack
-        if: failure()
+        if: failure() || cancelled()
         uses: slackapi/slack-github-action@v1.25.0
         with:
           payload: |
@@ -286,19 +269,73 @@ jobs:
           node-version: 20.x
 
       - name: git-slice-tools PULL-ISSUE
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.6.11
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.7.0
         with:
           upstream-issue: ${{ github.event.inputs.upstreamIssue }}
           slice-issue: ${{ github.event.inputs.sliceIssue }}
           trigger-by: ${{ github.actor }}
 
       - name: Failure report Slack
-        if: failure()
+        if: failure() || cancelled()
         uses: slackapi/slack-github-action@v1.25.0
         with:
           payload: |
             {
               "text": "git-slice-pull-issue failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
+
+  git-slice-pickup-push:
+    runs-on: ubuntu-latest
+
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'pickup-push' }}
+
+    steps:
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: git-slice-tools PICKUP-PUSH
+        uses: GitStartHQ/git-slice-tools-private/actions/pickup-push@v2.7.0
+        with:
+          operationId: ${{ github.event.inputs.operationId }}
+
+      - name: Failure report Slack
+        if: failure() || cancelled()
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          payload: |
+            {
+              "text": "git-slice-pickup-push failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
+
+  git-slice-pickup-pull:
+    runs-on: ubuntu-latest
+
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.job == 'pickup-pull' }}
+
+    steps:
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: git-slice-tools PICKUP-PULL
+        uses: GitStartHQ/git-slice-tools-private/actions/pickup-pull@v2.7.0
+        with:
+          operationId: ${{ github.event.inputs.operationId }}
+
+      - name: Failure report Slack
+        if: failure() || cancelled()
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          payload: |
+            {
+              "text": "git-slice-pickup-pull failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.GIT_SLICE_TOOLS_SLACK_WEBHOOK_URL }}
