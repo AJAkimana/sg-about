@@ -90,11 +90,9 @@ jobs:
       group: upstream-repo-pull-default-branch
       cancel-in-progress: false
 
-    if: |
-      ${{
-        github.event_name != 'issue_comment' && 
-        (github.event_name != 'workflow_dispatch' || github.event.inputs.job == 'pull-default-branch' || github.event.inputs.job == 'pull-a-branch')
-      }}
+    if:
+      ${{ github.event_name != 'issue_comment' &&  (github.event_name != 'workflow_dispatch' || github.event.inputs.job ==
+      'pull-default-branch' || github.event.inputs.job == 'pull-a-branch') }}
 
     steps:
       - name: Use Node.js
