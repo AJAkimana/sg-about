@@ -91,7 +91,7 @@ jobs:
       cancel-in-progress: false
 
     if:
-      ${{ github.event_name != 'issue_comment' &&  (github.event_name != 'workflow_dispatch' || github.event.inputs.job ==
+      ${{ github.event_name != 'issue_comment' && (github.event_name != 'workflow_dispatch' || github.event.inputs.job ==
       'pull-default-branch' || github.event.inputs.job == 'pull-a-branch') }}
 
     steps:
@@ -102,10 +102,10 @@ jobs:
 
       - name: git-slice-tools CHECKOUT
         id: checkout
-        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.7.1
 
       - name: git-slice-tools PULL
-        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.7.1
         env:
           GIT_SLICE_TOOLS_IGNORE_SETUP: ${{ steps.checkout.outputs.fromCache != 'true' }}
 
@@ -134,7 +134,7 @@ jobs:
           node-version: 20.x
 
       - name: git-slice-tools PULL-BRANCH
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-branch@v2.7.1
         with:
           branch: ${{ github.event.inputs.branch }}
           target-branch: ${{ github.event.inputs.targetBranch }}
@@ -166,7 +166,7 @@ jobs:
           node-version: 20.x
 
       - name: git-slice-tools PULL-REVIEW-COMMENT (trigger by comments)
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-review-comment@v2.7.1
 
       - name: Failure report Slack
         if: failure() || cancelled()
@@ -209,7 +209,7 @@ jobs:
           node-version: 20.x
 
       - name: Check PR
-        uses: GitStartHQ/git-slice-tools-private/actions/get-pr-details-for-issue-comment@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/get-pr-details-for-issue-comment@v2.7.1
         id: push-details
         with:
           ignoredBranches: ${{ env.GIT_SLICE_SLICING_NON_DEFAULT_BRANCHES && env.GIT_SLICE_SLICING_NON_DEFAULT_BRANCHES || '[]' }}
@@ -217,17 +217,17 @@ jobs:
       - name: git-slice-tools CHECKOUT
         if: ${{ steps.push-details.outputs.shouldContinue == 'true' }}
         id: checkout
-        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/checkout@v2.7.1
 
       - name: git-slice-tools PULL
         if: ${{ steps.push-details.outputs.shouldContinue == 'true' }}
-        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pull@v2.7.1
         env:
           GIT_SLICE_TOOLS_IGNORE_SETUP: ${{ steps.checkout.outputs.fromCache != 'true' }}
 
       - name: git-slice-tools PUSH (trigger by comments)
         if: ${{ steps.push-details.outputs.shouldContinue == 'true' }}
-        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/push-comment@v2.7.1
         env:
           GIT_SLICE_TOOLS_IGNORE_SETUP: true
 
@@ -267,7 +267,7 @@ jobs:
           node-version: 20.x
 
       - name: git-slice-tools PULL-ISSUE
-        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pull-issue@v2.7.1
         with:
           upstream-issue: ${{ github.event.inputs.upstreamIssue }}
           slice-issue: ${{ github.event.inputs.sliceIssue }}
@@ -296,7 +296,7 @@ jobs:
           node-version: 20.x
 
       - name: git-slice-tools PICKUP-PUSH
-        uses: GitStartHQ/git-slice-tools-private/actions/pickup-push@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pickup-push@v2.7.1
         with:
           operationId: ${{ github.event.inputs.operationId }}
 
@@ -323,7 +323,7 @@ jobs:
           node-version: 20.x
 
       - name: git-slice-tools PICKUP-PULL
-        uses: GitStartHQ/git-slice-tools-private/actions/pickup-pull@v2.7.0
+        uses: GitStartHQ/git-slice-tools-private/actions/pickup-pull@v2.7.1
         with:
           operationId: ${{ github.event.inputs.operationId }}
 
