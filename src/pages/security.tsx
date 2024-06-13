@@ -316,7 +316,7 @@ const SecurityPage: FunctionComponent = () => (
                                         </p>
                                         <Link
                                             href="https://security.sourcegraph.com/"
-                                            className="btn btn-secondary-outlined"
+                                            className="btn btn-secondary"
                                             title="Go to Security Trust Portal"
                                             data-button-style={buttonStyle.outline}
                                             target="_blank"
@@ -361,7 +361,7 @@ const SecurityPage: FunctionComponent = () => (
                                         </p>
                                         <Link
                                             href="mailto:security@sourcegraph.com"
-                                            className="btn btn-secondary-outlined"
+                                            className="btn btn-secondary"
                                             title="Go to Security Trust Portal"
                                             data-button-style={buttonStyle.outline}
                                         >

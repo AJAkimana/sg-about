@@ -30,15 +30,16 @@ const CopilotVsCodyPage: FunctionComponent = () => {
                 >
                     <Heading
                         size="h3"
-                        className="mt-[-15px] mb-0 pb-[5px] font-sf !leading-[30px] !tracking-[-0.25px] lg:w-[671px] lg:text-2xl"
+                        className="font-sf mt-[-15px] mb-0 pb-[5px] !leading-[30px] !tracking-[-0.25px] lg:w-[671px] lg:text-2xl"
                     >
-                        Cody is the better option for individuals who want a free AI code assistant that they can personalize using codebase context, or for users who would like to select which LLM they'd like to use.
-
+                        Cody is the better option for individuals who want a free AI code assistant that they can
+                        personalize using codebase context, or for users who would like to select which LLM they'd like
+                        to use.
                     </Heading>
 
                     <button
                         type="button"
-                        className="btn btn-inverted-primary mt-0 min-w-[204px] border px-6 py-2 text-violet-500 "
+                        className="btn btn-secondary mt-0 min-w-[204px] px-6 py-2"
                         title="Get Cody for free"
                         onClick={handleOpenModal}
                     >
