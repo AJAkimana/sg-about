@@ -65,7 +65,7 @@ const codeHosts = [
     { name: 'any Git-based code host', icon: '/code-search/code-hosts/any-git.svg' },
 ]
 
-export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({telemetryRecorder}) => (
+export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({ telemetryRecorder }) => (
     <Layout
         meta={{
             title: 'Sourcegraph | Code Search',
@@ -120,7 +120,7 @@ export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({telemetryReco
                         </ul>
                         <Link
                             href="/case-studies/nutanix-fixed-log4j-with-sourcegraph"
-                            className="flex gap-2.5 font-semibold leading-[22.4px] text-violet-500 underline"
+                            className="btn-link flex gap-2.5 font-semibold leading-[22.4px] underline"
                         >
                             Read how Nutanix used Code Search to mitigate Log4j vulnerabilities
                             <ChevronRightIcon />
@@ -207,7 +207,7 @@ export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({telemetryReco
 
                         <Link
                             href="/case-studies/indeed-accelerates-development-velocity"
-                            className="flex gap-2.5 font-semibold leading-[22.4px] text-violet-500 underline"
+                            className="btn-link flex gap-2.5 font-semibold leading-[22.4px] underline"
                         >
                             Read how Indeed uses Batch Changes to accelerate development
                             <ChevronRightIcon />
@@ -238,7 +238,7 @@ export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({telemetryReco
                         </ul>
                         <Link
                             href="/blog/announcing-code-insights"
-                            className="flex gap-2.5 font-semibold leading-[22.4px] text-violet-500 underline"
+                            className="btn-link flex gap-2.5 font-semibold leading-[22.4px] underline"
                         >
                             Learn more about Code Insights <ChevronRightIcon />
                         </Link>
@@ -352,7 +352,7 @@ const CodeSearchHero: FunctionComponent = () => (
                     </Link>
                     <Link
                         href="/pricing?product=codeSearch"
-                        className="btn w-[215px] text-center text-violet-500 outline outline-1 outline-violet-500 hover:text-violet-400 hover:outline-violet-400 sm:w-fit"
+                        className="btn btn-secondary w-[215px] text-center sm:w-fit"
                     >
                         See pricing
                     </Link>

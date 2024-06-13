@@ -19,7 +19,7 @@ export const MeetWithProductExpertButton: React.FunctionComponent<{
     dark = false,
     chevron = false,
     size = 'md',
-    buttonClassName = `${dark ? 'btn-outline-white' : 'btn-link'}`,
+    buttonClassName = `${dark ? 'btn-link-dark' : 'btn-link'}`,
     requestInfo = false,
     children = requestInfo ? 'Contact sales' : 'Talk to an engineer',
 }) => (

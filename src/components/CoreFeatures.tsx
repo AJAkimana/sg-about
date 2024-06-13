@@ -97,7 +97,7 @@ export const features: Features[] = [
     },
 ]
 
-export const CoreFeatures: FunctionComponent<TelemetryProps> = ({telemetryRecorder}) => {
+export const CoreFeatures: FunctionComponent<TelemetryProps> = ({ telemetryRecorder }) => {
     useEffect(() => {
         const videos = features.map(
             (vid, index): VideoElement => ({
@@ -162,7 +162,7 @@ export const CoreFeatures: FunctionComponent<TelemetryProps> = ({telemetryRecord
                                 href={feature.ctaLink}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="btn btn-outline-primary mt-2"
+                                className="btn btn-secondary mt-2"
                                 title={`Learn more about ${startCase(feature.productFeature)}`}
                                 data-button-style={buttonStyle.outline}
                                 data-button-location={buttonLocation.body}
@@ -173,7 +173,7 @@ export const CoreFeatures: FunctionComponent<TelemetryProps> = ({telemetryRecord
                         ) : (
                             <Link
                                 href={feature.ctaLink}
-                                className="btn btn-outline-primary mt-2"
+                                className="btn btn-secondary mt-2"
                                 title={`Learn more about ${startCase(feature.productFeature)}`}
                                 data-button-style={buttonStyle.outline}
                                 data-button-location={buttonLocation.body}
@@ -193,7 +193,12 @@ export const CoreFeatures: FunctionComponent<TelemetryProps> = ({telemetryRecord
                             playsInline={true}
                             controls={false}
                             data-cookieconsent="ignore"
-                            onPlay={() => telemetryRecorder.recordEvent('video', 'play', { metadata: { video: 4 }, privateMetadata: { title: feature.title, productFeature: feature.productFeature } })}
+                            onPlay={() =>
+                                telemetryRecorder.recordEvent('video', 'play', {
+                                    metadata: { video: 4 },
+                                    privateMetadata: { title: feature.title, productFeature: feature.productFeature },
+                                })
+                            }
                         >
                             <source type="video/webm" src={feature.video.webm} data-cookieconsent="ignore" />
                             <source type="video/mp4" src={feature.video.mp4} data-cookieconsent="ignore" />

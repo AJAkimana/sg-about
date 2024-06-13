@@ -40,7 +40,7 @@ interface ExternalLinkProps {
     id: string
     link: string
     openInNewTab?: boolean
-    disablePlanParam?: boolean 
+    disablePlanParam?: boolean
 }
 
 const PLAN_PRO = 'pro'
@@ -148,15 +148,13 @@ const ExternalLink: FunctionComponent<ExternalLinkProps> = ({
     icon,
     link,
     openInNewTab,
-    disablePlanParam
+    disablePlanParam,
 }) => (
     <Link
         href={plan === PLAN_PRO && !disablePlanParam ? `${link + '?pro=true'}` : `${link}`}
         className={classNames(
             'hover:sg-bg-hover-external-auth-button flex items-center justify-center px-4 py-2 font-normal hover:text-black md:h-12 md:px-6 md:text-base',
-            dark
-                ? 'hover:btn-primary bg-black text-white'
-                : 'btn-inverted-primary rounded-[3px] border border-gray-400 text-black',
+            dark ? 'hover:btn-primary' : 'btn-secondary',
             className
         )}
         onClick={handleOnClick}
@@ -215,9 +213,15 @@ export const ExternalProvider: FunctionComponent<ExternalProviderProps> = ({
             description: '',
         }
         if (providerType === VSCODE || providerType === JETBRAINS) {
-            telemetryRecorder.recordEvent('codyExtension', 'initiateInstall', { metadata: { editorType: telemetryProviderTypes[providerType] }, privateMetadata: eventArguments })
+            telemetryRecorder.recordEvent('codyExtension', 'initiateInstall', {
+                metadata: { editorType: telemetryProviderTypes[providerType] },
+                privateMetadata: eventArguments,
+            })
         } else {
-            telemetryRecorder.recordEvent('auth', 'initiate', { metadata: { authType: telemetryProviderTypes[providerType] }, privateMetadata: eventArguments })
+            telemetryRecorder.recordEvent('auth', 'initiate', {
+                metadata: { authType: telemetryProviderTypes[providerType] },
+                privateMetadata: eventArguments,
+            })
             Cookies.set('cody.survey.show', JSON.stringify(true), {
                 expires: 365,
                 domain: 'sourcegraph.com',

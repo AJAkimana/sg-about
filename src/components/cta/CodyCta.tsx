@@ -107,7 +107,7 @@ export const CodyCta: FunctionComponent<CodyCtaProps> = ({ isCodyPage = false, s
                     <Link
                         href="https://sourcegraph.com/contact/request-info"
                         title="Get Cody for Enterprise"
-                        className="btn hover:bg-color-violet-600 w-full rounded-[5px] border border-white px-6 py-2 text-center text-white md:w-auto"
+                        className="btn btn-secondary-dark w-full px-6 py-2 text-center md:w-auto"
                     >
                         {isLight ? (
                             <>
@@ -120,14 +120,11 @@ export const CodyCta: FunctionComponent<CodyCtaProps> = ({ isCodyPage = false, s
                     </Link>
                     <Link
                         href="/pricing"
-                        className="hidden items-center justify-center gap-[10px] font-semibold text-white hover:text-violet-300 hover:underline md:flex"
+                        className="btn-link-dark hidden items-center justify-center gap-[10px] font-semibold md:flex"
                     >
                         See pricing <ChevronRightIcon />
                     </Link>
-                    <Link
-                        href="/pricing"
-                        className="hover:bg-color-violet-600 rounded-[5px] border border-white px-5 py-3 text-center font-semibold text-white md:hidden"
-                    >
+                    <Link href="/pricing" className="btn-secondary-dark px-5 py-3 text-center font-semibold md:hidden">
                         See pricing
                     </Link>
                 </div>

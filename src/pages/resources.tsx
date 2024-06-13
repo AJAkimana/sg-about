@@ -121,16 +121,18 @@ const Resources: FunctionComponent<TelemetryProps> = ({ telemetryRecorder }) => 
 
     const handlerResourceItemClick = (resource: Resource, isFeatured?: boolean): void => {
         const { title, contentType, description } = resource
-        telemetryRecorder.recordEvent(`resources.${isFeatured ? 'featuredItem' : 'item'}`, 'click', { privateMetadata: {
-            title,
-            description,
-            contentType,
-        }})
+        telemetryRecorder.recordEvent(`resources.${isFeatured ? 'featuredItem' : 'item'}`, 'click', {
+            privateMetadata: {
+                title,
+                description,
+                contentType,
+            },
+        })
     }
 
     useEffect(() => {
         if (!resourcesToDisplay.length) {
-            telemetryRecorder.recordEvent('resources.filter.emptyResults', 'view', { privateMetadata: { searchTerm }})
+            telemetryRecorder.recordEvent('resources.filter.emptyResults', 'view', { privateMetadata: { searchTerm } })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [resourcesToDisplay.length, telemetryRecorder])
@@ -177,7 +179,7 @@ const Resources: FunctionComponent<TelemetryProps> = ({ telemetryRecorder }) => 
                         </Heading>
                         <Link
                             href={featuredResource.link}
-                            className="hidden rounded-[5px] border border-violet-500 px-6 py-2 text-center font-semibold text-violet-500 hover:border-violet-400 hover:text-violet-400 lg:block"
+                            className="btn btn-secondary hidden px-6 py-2 text-center font-semibold lg:block"
                         >{`Read the ${featuredResource.contentType}`}</Link>
                     </div>
                     <div className="flex justify-center lg:justify-end">
@@ -192,7 +194,7 @@ const Resources: FunctionComponent<TelemetryProps> = ({ telemetryRecorder }) => 
                     <Link
                         href={featuredResource.link}
                         onClick={() => handlerResourceItemClick(featuredResource, true)}
-                        className="mx-auto mt-8 w-fit rounded-[5px] border border-violet-500 px-6 py-2 text-center font-semibold text-violet-500 hover:border-violet-400 hover:text-violet-400 lg:hidden"
+                        className="btn btn-secondary mx-auto mt-8 w-fit px-6 py-2 text-center font-semibold lg:hidden"
                     >{`Read the ${featuredResource.contentType}`}</Link>
                 </div>
             </ContentSection>
@@ -240,7 +242,7 @@ const Resources: FunctionComponent<TelemetryProps> = ({ telemetryRecorder }) => 
                         {displayLimit > 6 && filteredResources.length > 6 && (
                             <button
                                 type="button"
-                                className="rounded-[5px] bg-violet-500 px-6 py-2  text-base font-semibold text-white hover:bg-violet-400"
+                                className="btn btn-primary px-6 py-2 text-base font-semibold"
                                 onClick={() => handleShowLess()}
                             >
                                 Show Less
@@ -249,7 +251,7 @@ const Resources: FunctionComponent<TelemetryProps> = ({ telemetryRecorder }) => 
                         {displayLimit < resources.length && (
                             <button
                                 type="button"
-                                className="rounded-[5px] bg-violet-500 px-6 py-2  text-base font-semibold text-white hover:bg-violet-400"
+                                className="btn btn-primary px-6 py-2 text-base font-semibold"
                                 onClick={handleShowMore}
                             >
                                 Show More

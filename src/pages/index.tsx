@@ -62,8 +62,8 @@ const Home: FunctionComponent = () => {
                             <Heading size="h1">Cody</Heading>
                         </div>
                         <Heading size="h3" className="leading-[30px] !-tracking-[0.25px] text-gray-500">
-                            Ship code faster with Cody, the AI coding assistant. Cody uses advanced search and
-                            codebase context to help you write and fix code.
+                            Ship code faster with Cody, the AI coding assistant. Cody uses advanced search and codebase
+                            context to help you write and fix code.
                         </Heading>
                     </div>
                     <div className="pb-8">
@@ -378,7 +378,7 @@ const HomeHero: FunctionComponent = () => {
                     </p>
                     <button
                         type="button"
-                        className={classNames('btn btn-inverted-primary text-violet-500')}
+                        className={classNames('btn btn-primary-dark')}
                         title="free cody"
                         onClick={handleOpenModal}
                     >

@@ -102,7 +102,7 @@
     }
 
     .btn-primary {
-        @apply bg-[#270741] text-white hover:bg-[#6112A3] focus:bg-violet-700 focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
+        @apply bg-[#270741] text-[#EBEBEB] hover:bg-[#6112A3] focus:bg-violet-700 focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
     }
     .btn-primary-dark {
         @apply bg-gray-300 rounded-[5px] text-[#270741] hover:bg-[#C9C9C9] focus:bg-gray-200 focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
@@ -120,6 +120,7 @@
     .btn-secondary {
         @apply rounded-[5px] border-1 border-[#270741] bg-white text-[#270741] hover:bg-[#EEDFFF] focus:border-3 focus:bg-[#CE9CFF];
     }
+
     .btn-secondary-dark {
         @apply rounded-[5px] border-1 border-[#EBEBEB] bg-transparent text-[#EBEBEB] hover:bg-[#6112A3] hover:border-[#EBEBEB] focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
     }
@@ -129,7 +130,11 @@
     }
 
     .btn-link {
-        @apply text-violet-400 hover:text-violet-500 hover:underline;
+        @apply text-[#820DDE] hover:underline;
+    }
+
+    .btn-link-dark {
+        @apply text-[#EBEBEB] hover:underline;
     }
 
     .btn-group {

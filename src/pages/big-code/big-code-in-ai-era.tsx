@@ -233,7 +233,7 @@ const TheRiseOfAI: FunctionComponent = () => (
                 </Heading>
                 <Link
                     href="/cody"
-                    className="btn btn-outline-white w-fit min-w-fit px-6 font-normal"
+                    className="btn btn-secondary-dark w-fit min-w-fit px-6 font-normal"
                     title="Get access to Cody"
                 >
                     Get access to Cody

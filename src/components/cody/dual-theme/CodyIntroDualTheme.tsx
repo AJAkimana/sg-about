@@ -47,10 +47,7 @@ export const CodyIntroDualTheme: FunctionComponent<CodyIntroDualThemeProps> = ({
             </Heading>
             <button
                 type="button"
-                className={classNames('btn btn-inverted-primary px-5 py-3', {
-                    'bg-violet-700 text-[#FFF]': isLight,
-                    'text-violet-500': !isLight,
-                })}
+                className={classNames('btn px-5 py-3', isLight ? 'btn-primary' : 'btn-primary-dark')}
                 title="Get Cody for free"
                 onClick={handleOpenModal}
             >
