@@ -38,7 +38,7 @@ const CursorVsCodyPage: FunctionComponent = () => {
 
                     <button
                         type="button"
-                        className="btn mt-0 min-w-[204px] px-6 py-2"
+                        className="btn btn-secondary mt-0 min-w-[204px] px-6 py-2"
                         title="Get Cody for free"
                         onClick={handleOpenModal}
                     >
