@@ -97,6 +97,7 @@
         transition-duration: 0.2s;
         transition-property: background, color, border-color;
     }
+
     .btn:not(.btn-link) {
         @apply font-semibold;
     }
@@ -104,29 +105,17 @@
     .btn-primary {
         @apply bg-[#270741] text-[#EBEBEB] hover:bg-[#6112A3] focus:bg-violet-700 focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
     }
+    
     .btn-primary-dark {
         @apply bg-gray-300 rounded-[5px] text-[#270741] hover:bg-[#C9C9C9] focus:bg-gray-200 focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
     }
-    .btn-inverted-primary {
-        @apply bg-white text-violet-400 outline-none hover:bg-violet-600 hover:text-white focus:border-transparent focus:bg-white focus:text-violet-400 focus:ring focus:ring-violet-400;
-    }
-    .btn-outline-primary {
-        @apply border-1 border-violet-400 bg-white text-violet-400 hover:bg-violet-400 hover:text-white;
-    }
-    .btn-outline-white {
-        @apply border border-white/75 text-white/75 hover:border-white hover:text-white;
-    }
-
+    
     .btn-secondary {
         @apply rounded-[5px] border-1 border-[#270741] bg-white text-[#270741] hover:bg-[#EEDFFF] focus:border-3 focus:bg-[#CE9CFF];
     }
 
     .btn-secondary-dark {
         @apply rounded-[5px] border-1 border-[#EBEBEB] bg-transparent text-[#EBEBEB] hover:bg-[#6112A3] hover:border-[#EBEBEB] focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
-    }
-
-    .btn-secondary-outlined {
-        @apply border-1 border-violet-400 bg-white text-violet-400 outline-none hover:bg-violet-100 focus:border-transparent focus:ring focus:ring-violet-300;
     }
 
     .btn-link {
