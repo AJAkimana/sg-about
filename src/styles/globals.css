@@ -91,6 +91,9 @@
 }
 
 @layer components {
+    .bg-darkened {
+        background:linear-gradient(80deg,rgba(112,72,232,0.20)_-19.42%,rgba(74,193,232,0.20)_26.02%,rgba(161,18,255,0.20)_65.63%,rgba(255,85,67,0.20)_116.4%),rgba(255,255,255,0.10)
+    }
     .btn {
         @apply inline-block rounded py-2 px-6;
         transition-timing-function: ease-in-out;
@@ -105,11 +108,11 @@
     .btn-primary {
         @apply bg-[#270741] text-[#EBEBEB] hover:bg-[#6112A3] focus:bg-violet-700 focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
     }
-    
+
     .btn-primary-dark {
         @apply bg-gray-300 rounded-[5px] text-[#270741] hover:bg-[#C9C9C9] focus:bg-gray-200 focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
     }
-    
+
     .btn-secondary {
         @apply rounded-[5px] border-1 border-[#270741] bg-white text-[#270741] hover:bg-[#EEDFFF] focus:border-3 focus:bg-[#CE9CFF];
     }
@@ -126,17 +129,31 @@
         @apply text-[#EBEBEB] hover:underline;
     }
 
+    .btn-link:has(> svg) :first-child {
+        @apply hover:m-1
+    }
+
+    .btn-link-dark:has(> svg) :first-child {
+        @apply hover:m-1
+    }
+
     .btn-group {
         @apply flex items-stretch;
     }
-    .btn-group > .btn:not(:last-child) {
+
+    .btn-group>.btn:not(:last-child) {
         @apply rounded-r-none;
     }
-    .btn-group > .btn:not(:first-child) {
+
+    .btn-group>.btn:not(:first-child) {
         @apply ml-[1.5px] rounded-l-none;
     }
-    .btn-default-outlined {
-        @apply border border-white text-base font-semibold text-white hover:bg-white hover:text-violet-500;
+
+    .btn-darkened {
+        @apply flex justify-center items-center rounded-[3px] border border-white/10 bg-white/10 gap-2 p-4 text-white
+    }
+    .btn-darkened {
+        @apply flex justify-center items-center p-4 gap-2 rounded-sm border border-white/10 bg-darkened text-white
     }
 }
 
