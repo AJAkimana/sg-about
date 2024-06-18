@@ -13,7 +13,7 @@
     "eslint": "eslint '**/*.{ts,tsx}'",
     "eslint:fix": "pnpm run eslint --fix",
     "prettier": "prettier '**/{*.{js?(on),ts?(x),md,scss},.*.js?(on)}' --write --list-different",
-    "prettier:changed": "prettier $( { git diff --diff-filter=d --name-only origin/main... && git ls-files --other --modified --exclude-standard ; } | grep -E '\\.(js|ts|tsx|scss)$' | xargs) --write --list-different",
+    "prettier:changed": "prettier $( { git diff --diff-filter=d --name-only origin/main... && git ls-files --other --modified --exclude-standard ; } | grep -E '\\.(js|ts|tsx|css)$' | xargs) --write --list-different",
     "prettier:check": "pnpm run -s prettier --write=false",
     "cypress": "cypress open",
     "cypress:headless": "cypress run --browser chrome",
