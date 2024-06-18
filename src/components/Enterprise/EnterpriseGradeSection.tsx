@@ -83,7 +83,7 @@ export const EnterpriseGradeSection: FunctionComponent<EnterpriseGradeSectionPro
                         <Link
                             href="/whitepapers/cody-security-and-legal"
                             title="Cody security & legal whitepaper"
-                            className="mx-[3px] text-black underline underline-offset-[4.3px] "
+                            className="mx-[3px] btn-link"
                         >
                             Cody security & legal whitepaper
                         </Link>
