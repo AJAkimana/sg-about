@@ -147,7 +147,7 @@
     }
 
     .btn-link-icon {
-        @apply inline-flex hover:gap-2
+        @apply inline-flex transition ease-in-out delay-150 hover:gap-2 duration-300
     }
 
     .btn-group {
