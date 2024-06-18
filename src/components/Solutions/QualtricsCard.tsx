@@ -44,7 +44,7 @@ export const QualtricsCard = (): JSX.Element => (
             <Link
                 href="https://sourcegraph.com/case-studies/qualtrics-speeds-up-unit-tests-and-code-understanding-with-cody"
                 title="Case study"
-                className="btn btn-link p-0"
+                className="btn btn-link btn-link-icon p-0"
             >
                 Read the case study
                 <ChevronRightIcon className="!mb-0.5 ml-[10px] inline" />

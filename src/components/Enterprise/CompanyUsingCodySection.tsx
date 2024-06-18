@@ -15,7 +15,7 @@ export const CompanyUsingCodySection: FunctionComponent = () => (
             <Link
                 href="https://sourcegraph.com/case-studies"
                 title="Cody"
-                className="btn btn-link p-0 text-center font-semibold !-tracking-[0.25px]"
+                className="btn btn-link btn-link-icon p-0 text-center font-semibold !-tracking-[0.25px]"
             >
                 Read customer stories
                 <ChevronRightIcon className="!mb-0 ml-[10px] inline" />

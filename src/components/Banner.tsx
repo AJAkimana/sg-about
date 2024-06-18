@@ -11,7 +11,7 @@ export const Banner: FunctionComponent<{}> = () => (
             <Link
                 href="https://sourcegraph.com/blog/cody-for-jetbrains-is-generally-available"
                 title="Cody for JetBrains blog"
-                className="btn btn-link-dark !px-0 !py-0 leading-[22px]"
+                className="btn btn-link-dark btn-link-icon !px-0 !py-0 leading-[22px]"
             >
                 See what's new
                 <ChevronRightIcon className="!mb-0 ml-[6px] inline" />

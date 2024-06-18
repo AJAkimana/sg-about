@@ -92,7 +92,24 @@
 
 @layer components {
     .bg-darkened {
-        background:linear-gradient(80deg,rgba(112,72,232,0.20)_-19.42%,rgba(74,193,232,0.20)_26.02%,rgba(161,18,255,0.20)_65.63%,rgba(255,85,67,0.20)_116.4%),rgba(255,255,255,0.10)
+        background: linear-gradient(
+            80deg, 
+            rgba(112, 72, 232, 0.20) -19.42%, 
+            rgba(74, 193, 232, 0.20) 26.02%, 
+            rgba(161, 18, 255, 0.20) 65.63%, 
+            rgba(255, 85, 67, 0.20) 116.4%, 
+            rgba(255, 255, 255, 0.10)
+        );
+    }
+    .bg-badge {
+        background: linear-gradient(
+            80deg, 
+            rgba(112, 72, 232, 0.20) -19.42%, 
+            rgba(74, 193, 232, 0.20) 26.02%, 
+            rgba(161, 18, 255, 0.20) 65.63%, 
+            rgba(255, 85, 67, 0.20) 116.4%,
+            #FFF
+        );
     }
     .btn {
         @apply inline-block rounded py-2 px-6;
@@ -129,12 +146,8 @@
         @apply text-[#EBEBEB] hover:underline;
     }
 
-    .btn-link:has(> svg) :first-child {
-        @apply hover:m-1
-    }
-
-    .btn-link-dark:has(> svg) :first-child {
-        @apply hover:m-1
+    .btn-link-icon {
+        @apply inline-flex hover:gap-2
     }
 
     .btn-group {
@@ -150,10 +163,11 @@
     }
 
     .btn-darkened {
-        @apply flex justify-center items-center rounded-[3px] border border-white/10 bg-white/10 gap-2 p-4 text-white
+        @apply flex justify-center items-center rounded-[3px] border border-white/10 bg-white/10 gap-2 p-4 text-white hover:bg-darkened
     }
-    .btn-darkened {
-        @apply flex justify-center items-center p-4 gap-2 rounded-sm border border-white/10 bg-darkened text-white
+
+    .btn-badge {
+        @apply inline-flex justify-center items-center px-4 py-2 gap-4 rounded-md border border-gray-200 bg-gray-300 text-violet-500 hover:bg-badge
     }
 }
 
@@ -522,7 +536,7 @@
             ),
             rgba(255, 255, 255, 0.1);
     }
-    .sg-bg-hover-external-auth-button {
+    .sign-in-button {
         background: linear-gradient(
                 80deg,
                 rgba(112, 72, 232, 0.2) -19.42%,

@@ -28,6 +28,7 @@ export const MeetWithProductExpertButton: React.FunctionComponent<{
         className={classNames(
             'btn inline-flex items-center whitespace-nowrap',
             buttonClassName,
+            chevron ? 'btn-link-icon' : '',
             size === 'lg' && 'py-xs'
         )}
         title={children}

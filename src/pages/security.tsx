@@ -29,7 +29,7 @@ const SecurityPage: FunctionComponent = () => (
 
                     <Link
                         href="mailto:security@sourcegraph.com"
-                        className="btn-link mt-md flex justify-center font-semibold"
+                        className="btn-link btn-link-icon mt-md flex justify-center font-semibold"
                         title="Contact our security team"
                         data-button-style={buttonStyle.textWithArrow}
                     >
@@ -333,7 +333,7 @@ const SecurityPage: FunctionComponent = () => (
 
                                         <Link
                                             href="/terms/subprocessors"
-                                            className="btn-link mt-md flex font-semibold"
+                                            className="btn-link btn-link-icon mt-md flex font-semibold"
                                             title="Go to Subprocessors"
                                             data-button-style={buttonStyle.textWithArrow}
                                         >

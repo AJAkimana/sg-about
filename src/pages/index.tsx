@@ -141,7 +141,7 @@ const Home: FunctionComponent = () => {
                     <Link
                         href="https://sourcegraph.com/cody"
                         title="Cody"
-                        className="btn btn-link mx-6 mb-16 p-0 px-5 py-3 text-center font-semibold !-tracking-[0.25px] md:mx-0 md:mb-28 md:px-0 md:pb-0 md:pt-0 md:text-left"
+                        className="btn btn-link btn-link-icon mx-6 mb-16 p-0 px-5 py-3 text-center font-semibold !-tracking-[0.25px] md:mx-0 md:mb-28 md:px-0 md:pb-0 md:pt-0 md:text-left"
                     >
                         Learn more about Cody
                         <ChevronRightIcon className="!mb-0 ml-[10px] inline" />
@@ -272,7 +272,7 @@ const Home: FunctionComponent = () => {
                     <Link
                         href="https://sourcegraph.com/code-search"
                         title="Code Search"
-                        className="btn btn-link mx-6 mb-28 p-0 px-5 py-3 text-center font-semibold !-tracking-[0.25px] md:mx-0 md:mb-24 md:px-0 md:pb-0 md:pt-0 md:text-left"
+                        className="btn btn-link btn-link-icon mx-6 mb-28 p-0 px-5 py-3 text-center font-semibold !-tracking-[0.25px] md:mx-0 md:mb-24 md:px-0 md:pb-0 md:pt-0 md:text-left"
                     >
                         Learn more about Code Search
                         <ChevronRightIcon className="!mb-0 ml-[10px] inline" />
@@ -292,7 +292,7 @@ const Home: FunctionComponent = () => {
                             <Link
                                 href="https://sourcegraph.com/case-studies/lyft-monolith-to-microservices"
                                 title="Case study"
-                                className="btn btn-link-dark p-0"
+                                className="btn btn-link-dark btn-link-icon p-0"
                             >
                                 Read the case study
                                 <ChevronRightIcon className="!mb-0 ml-[10px] inline" />
@@ -341,7 +341,10 @@ const Home: FunctionComponent = () => {
                                 <Link
                                     href="https://sourcegraph.com/pricing"
                                     title="See pricing"
-                                    className="btn btn-link-dark w-full rounded-[5px] px-6 text-center md:w-auto"
+                                    className={classNames(
+                                        'btn btn-link-dark w-full rounded-[5px] px-6 text-center md:w-auto',
+                                        !isMobile ? 'btn-link-icon' : ''
+                                    )}
                                 >
                                     See pricing
                                     {!isMobile && <ChevronRightIcon className="!mb-0 ml-[10px] inline" />}

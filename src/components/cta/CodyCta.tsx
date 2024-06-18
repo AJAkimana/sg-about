@@ -120,7 +120,7 @@ export const CodyCta: FunctionComponent<CodyCtaProps> = ({ isCodyPage = false, s
                     </Link>
                     <Link
                         href="/pricing"
-                        className="btn-link-dark hidden items-center justify-center gap-[10px] font-semibold md:flex"
+                        className="btn-link-dark btn-link-icon hidden items-center justify-center gap-[10px] font-semibold md:flex"
                     >
                         See pricing <ChevronRightIcon />
                     </Link>

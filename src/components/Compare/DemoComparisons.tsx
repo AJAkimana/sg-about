@@ -59,7 +59,7 @@ export const DemoComparisons: FunctionComponent = () => (
 
                     <Link
                         href={assistant.url}
-                        className="btn-link flex font-semibold tracking-[-0.25px]"
+                        className="btn-link btn-link-icon flex font-semibold tracking-[-0.25px]"
                         title="Learn more"
                     >
                         Learn more

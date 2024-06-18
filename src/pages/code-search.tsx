@@ -120,7 +120,7 @@ export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({ telemetryRec
                         </ul>
                         <Link
                             href="/case-studies/nutanix-fixed-log4j-with-sourcegraph"
-                            className="btn-link flex gap-2.5 font-semibold leading-[22.4px] underline"
+                            className="btn-link btn-link-icon flex gap-2.5 font-semibold leading-[22.4px] underline"
                         >
                             Read how Nutanix used Code Search to mitigate Log4j vulnerabilities
                             <ChevronRightIcon />
@@ -207,7 +207,7 @@ export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({ telemetryRec
 
                         <Link
                             href="/case-studies/indeed-accelerates-development-velocity"
-                            className="btn-link flex gap-2.5 font-semibold leading-[22.4px] underline"
+                            className="btn-link btn-link-icon flex gap-2.5 font-semibold leading-[22.4px] underline"
                         >
                             Read how Indeed uses Batch Changes to accelerate development
                             <ChevronRightIcon />
@@ -238,7 +238,7 @@ export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({ telemetryRec
                         </ul>
                         <Link
                             href="/blog/announcing-code-insights"
-                            className="btn-link flex gap-2.5 font-semibold leading-[22.4px] underline"
+                            className="btn-link btn-link-icon flex gap-2.5 font-semibold leading-[22.4px] underline"
                         >
                             Learn more about Code Insights <ChevronRightIcon />
                         </Link>
