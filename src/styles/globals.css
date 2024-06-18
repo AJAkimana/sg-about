@@ -127,11 +127,11 @@
     }
 
     .btn-primary-dark {
-        @apply bg-gray-300 rounded-[5px] text-[#270741] hover:bg-[#C9C9C9] focus:bg-gray-200 focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
+        @apply bg-[#EBEBEB] rounded-[5px] text-[#270741] hover:bg-[#C9C9C9] focus:bg-gray-200 focus:border-3 focus:rounded-[5px] focus:border-[#CE9CFF];
     }
 
     .btn-secondary {
-        @apply rounded-[5px] border-1 border-[#270741] bg-white text-[#270741] hover:bg-[#EEDFFF] focus:border-3 focus:bg-[#CE9CFF];
+        @apply rounded-[5px] border-1 border-[#270741] bg-transparent text-[#270741] hover:bg-[#EEDFFF] focus:border-3 focus:bg-[#CE9CFF];
     }
 
     .btn-secondary-dark {
