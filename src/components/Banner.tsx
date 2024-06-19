@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const Banner: FunctionComponent<{}> = () => (
     <div className="sg-border-gradient-banner z-[1000] border-b-1 bg-black py-[13px]">
-        <div className="mx-auto flex max-w-screen-xl flex-col items-center justify-center gap-y-[9px] gap-x-12 px-2 md:flex-row">
+        <div className="mx-auto flex max-w-screen-xl flex-col items-center justify-center gap-y-[9px] gap-12 px-2 md:flex-row">
             <p className="mb-0 text-center font-semibold leading-[22px] text-white">
                 Cody for JetBrains is now Generally Available
             </p>
@@ -14,7 +14,7 @@ export const Banner: FunctionComponent<{}> = () => (
                 className="btn btn-link-dark btn-link-icon !px-0 !py-0 leading-[22px]"
             >
                 See what's new
-                <ChevronRightIcon className="!mb-0 ml-[6px] inline" />
+                <ChevronRightIcon />
             </Link>
         </div>
     </div>

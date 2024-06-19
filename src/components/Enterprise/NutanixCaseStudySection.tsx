@@ -41,10 +41,10 @@ export const NutanixCaseStudySection: FunctionComponent = () => (
                     <Link
                         href="https://sourcegraph.com/case-studies/nutanix-fixed-log4j-with-sourcegraph"
                         title="Case study"
-                        className="btn btn-link btn-link-icon flex-end p-0 text-right font-semibold !-tracking-[0.25px] md:mx-0 md:text-left "
+                        className="btn btn-link btn-link-icon p-0 text-right font-semibold !-tracking-[0.25px] md:mx-0 md:text-left"
                     >
                         Read the case study
-                        <ChevronRightIcon className="!mb-0 ml-[10px] inline" />
+                        <ChevronRightIcon />
                     </Link>
                 </div>
             </div>

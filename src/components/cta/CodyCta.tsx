@@ -60,8 +60,8 @@ export const CodyCta: FunctionComponent<CodyCtaProps> = ({ isCodyPage = false, s
                         onClick={handleOpenModal}
                         title="Get Cody free"
                         className={classNames('btn text-center', {
-                            'btn-primary': !isLight,
-                            'btn-primary-dark': isLight,
+                            'btn-primary': isLight,
+                            'btn-primary-dark': !isLight,
                         })}
                         type="button"
                     >

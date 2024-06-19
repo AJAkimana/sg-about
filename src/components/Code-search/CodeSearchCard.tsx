@@ -25,12 +25,12 @@ export const CodeSearchCard: FunctionComponent = () => (
                 free trial.
             </Heading>
             <div className="flex max-w-[356px] flex-col flex-wrap gap-4 pt-4 sm:flex-row">
-                <Link href="/demo" className="btn btn-primary max-w-[216px]">
+                <Link href="/demo" className="btn btn-primary-dark max-w-[216px]">
                     Contact us for a demo
                 </Link>
                 <Link
                     href="/pricing?product=codeSearch"
-                    className="flex items-center justify-start gap-[10px] whitespace-nowrap font-semibold text-white hover:text-violet-300 hover:underline"
+                    className="flex btn-link-dark btn-link-icon items-center justify-start whitespace-nowrap font-semibold"
                 >
                     See pricing <ChevronRightIcon />
                 </Link>
