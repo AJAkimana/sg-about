@@ -569,10 +569,10 @@ const PricingPage: FunctionComponent = () => {
                         <Link
                             href="/contact/request-info?form_submission_source=pricing-enterprise"
                             title="contact Sourcegraph"
-                            className="btn p-0 leading-[22px] text-violet-500 underline underline-offset-2"
+                            className="btn btn-link p-0 leading-[22px]"
                         >
                             Contact us.
-                        </Link>{' '}
+                        </Link>
                     </div>
                 </div>
                 <div className="col-span-full grid gap-4 md:col-span-3">

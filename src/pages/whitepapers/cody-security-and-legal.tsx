@@ -53,10 +53,18 @@ const CodySecurityAndLegal: NextPage = () => {
                         </p>
                         <p>
                             For information related to Cody features, usage, and administration, see the{' '}
-                            <Link href="/cody">Cody product page</Link>
-                            and <Link href="/cody/docs">Cody documentation</Link>. For general information about
-                            Sourcegraph security, including our SOC 2 report, visit the{' '}
-                            <Link href="https://security.sourcegraph.com">Sourcegraph security portal</Link>.
+                            <Link className="btn-link" href="/cody">
+                                Cody product page
+                            </Link>{' '}
+                            and{' '}
+                            <Link className="btn-link" href="/cody/docs">
+                                Cody documentation
+                            </Link>
+                            . For general information about Sourcegraph security, including our SOC 2 report, visit the{' '}
+                            <Link className="btn-link" href="https://security.sourcegraph.com">
+                                Sourcegraph security portal
+                            </Link>
+                            .
                         </p>
                         <h2>Architecture and data flow</h2>
                         <p>
@@ -228,8 +236,10 @@ const CodySecurityAndLegal: NextPage = () => {
                         <p>
                             Cody currently uses Anthropic's Claude as the default LLM. Cody sends requests from the
                             Sourcegraph instance to Anthropic's API, which resides at{' '}
-                            <Link href="https://api.anthropic.com">https://api.anthropic.com</Link>. To reduce the risk
-                            of data leakage and compliance concerns, Cody Enterprise offers:
+                            <Link className="btn-link" href="https://api.anthropic.com">
+                                https://api.anthropic.com
+                            </Link>
+                            . To reduce the risk of data leakage and compliance concerns, Cody Enterprise offers:
                         </p>
                         <ul>
                             <li>

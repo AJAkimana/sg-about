@@ -165,6 +165,7 @@ export const CaseStudy: FunctionComponent = () => (
                         <a
                             target="_blank"
                             rel="noreferrer"
+                            className="btn-link"
                             href="https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/net/JMSAppender.html"
                             title="JMSAppender"
                             data-button-style={buttonStyle.text}
@@ -179,6 +180,7 @@ export const CaseStudy: FunctionComponent = () => (
                         <Link
                             href="/blog/log4j-log4shell-0-day/"
                             title="blog post"
+                            className="btn-link"
                             data-button-style={buttonStyle.text}
                             data-button-location={buttonLocation.body}
                             data-button-type="cta"

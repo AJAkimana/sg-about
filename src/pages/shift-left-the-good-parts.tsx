@@ -38,7 +38,7 @@ const blogResourceItems = [
     },
 ]
 
-const ShiftLeftPage: FunctionComponent<TelemetryProps> = ({telemetryRecorder}) => (
+const ShiftLeftPage: FunctionComponent<TelemetryProps> = ({ telemetryRecorder }) => (
     <Layout
         meta={{
             title: 'Shift Left - Sourcegraph',
@@ -230,6 +230,7 @@ const ShiftLeftPage: FunctionComponent<TelemetryProps> = ({telemetryRecorder}) =
                                 <Link
                                     href="https://sourcegraph.com/docs/code_search/reference/structural#syntax-reference"
                                     title="Comby patterns"
+                                    className="btn-link"
                                     data-button-style={buttonStyle.text}
                                     data-button-location={buttonLocation.body}
                                     data-button-type="cta"
