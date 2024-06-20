@@ -57,6 +57,7 @@ const About: FunctionComponent = () => (
                     <a
                         href="https://handbook.sourcegraph.com"
                         title="Sourcegraph handbook"
+                        className='btn-link'
                         data-button-style={buttonStyle.text}
                         data-button-location={buttonLocation.body}
                         data-button-type="cta"
@@ -67,6 +68,7 @@ const About: FunctionComponent = () => (
                     <a
                         href="https://handbook.sourcegraph.com/strategy-goals/strategy"
                         title="Strategy"
+                        className='btn-link'
                         data-button-style={buttonStyle.text}
                         data-button-location={buttonLocation.body}
                         data-button-type="cta"
@@ -77,6 +79,7 @@ const About: FunctionComponent = () => (
                     <a
                         href="https://handbook.sourcegraph.com/company/values"
                         title="Values"
+                        className='btn-link'
                         data-button-style={buttonStyle.text}
                         data-button-location={buttonLocation.body}
                         data-button-type="cta"
@@ -87,6 +90,7 @@ const About: FunctionComponent = () => (
                     <a
                         href="https://handbook.sourcegraph.com/marketing/messaging"
                         title="Messaging"
+                        className='btn-link'
                         data-button-style={buttonStyle.text}
                         data-button-location={buttonLocation.body}
                         data-button-type="cta"
@@ -97,6 +101,7 @@ const About: FunctionComponent = () => (
                     <a
                         href="https://handbook.sourcegraph.com/departments/product-engineering/engineering/process/principles-and-practices"
                         title="Engineering principles"
+                        className='btn-link'
                         data-button-style={buttonStyle.text}
                         data-button-location={buttonLocation.body}
                         data-button-type="cta"
@@ -107,6 +112,7 @@ const About: FunctionComponent = () => (
                     <a
                         href="https://handbook.sourcegraph.com/company/values#open-and-transparent"
                         title="open and transparent"
+                        className='btn-link'
                         data-button-style={buttonStyle.text}
                         data-button-location={buttonLocation.body}
                         data-button-type="cta"
@@ -124,6 +130,7 @@ const About: FunctionComponent = () => (
                     <a
                         href="https://handbook.sourcegraph.com/company/remote"
                         title="All remote"
+                        className='btn-link'
                         data-button-style={buttonStyle.text}
                         data-button-location={buttonLocation.body}
                         data-button-type="cta"
@@ -134,6 +141,7 @@ const About: FunctionComponent = () => (
                     <a
                         href="https://handbook.sourcegraph.com/company/team"
                         title="Team members"
+                        className='btn-link'
                         data-button-style={buttonStyle.text}
                         data-button-location={buttonLocation.body}
                         data-button-type="cta"
@@ -144,6 +152,7 @@ const About: FunctionComponent = () => (
                     <a
                         href="https://handbook.sourcegraph.com/communication/code_of_conduct#our-standards"
                         title="Inclusion"
+                        className='btn-link'
                         data-button-style={buttonStyle.text}
                         data-button-location={buttonLocation.body}
                         data-button-type="cta"
