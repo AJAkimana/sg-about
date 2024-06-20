@@ -165,8 +165,12 @@
     }
 
     .btn-link-icon {
-        @apply inline-flex gap-0 hover:gap-2;
-        transition: gap 0.3s ease-in-out;
+        @apply inline-flex;
+    }
+
+    .btn-link-icon:hover .mdi-icon {
+        transform: translateX(8px);
+        transition: 0.3s ease-in-out
     }
 
     .btn-group {
