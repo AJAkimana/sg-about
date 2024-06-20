@@ -86,7 +86,7 @@ const HEADER_CONTENT_THEME_CLASS: Record<
     },
     dark: {
         container: 'bg-black',
-        item: 'text-white hover:bg-white/25 focus:ring-white',
+        item: 'text-white hover:bg-violet-600 focus:ring-white',
         menu: 'bg-gray-700 ring-white',
         menuItem: 'text-white',
         menuItemActive: 'bg-gray-600',
