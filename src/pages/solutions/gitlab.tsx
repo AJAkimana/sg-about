@@ -98,7 +98,7 @@ const TestimonialCard: FunctionComponent = () => (
                         className="btn-link-dark btn-link-icon font-semibold leading-[22.4px]"
                     >
                         Read the case study
-                        <ChevronRightIcon className='icon' />
+                        <ChevronRightIcon className="icon" />
                     </Link>
                 </div>
             </div>

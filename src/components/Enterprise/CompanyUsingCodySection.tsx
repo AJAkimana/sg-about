@@ -18,7 +18,7 @@ export const CompanyUsingCodySection: FunctionComponent = () => (
                 className="btn btn-link btn-link-icon p-0 text-center font-semibold !-tracking-[0.25px]"
             >
                 Read customer stories
-                <ChevronRightIcon className='icon' />
+                <ChevronRightIcon className="icon" />
             </Link>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-[42px] ">

@@ -47,7 +47,7 @@ export const QualtricsCard = (): JSX.Element => (
                 className="btn btn-link btn-link-icon p-0"
             >
                 Read the case study
-                <ChevronRightIcon className="!mb-0.5 ml-[10px] inline icon" />
+                <ChevronRightIcon className="icon !mb-0.5 ml-[10px] inline" />
             </Link>
         </div>
     </ContentSection>
