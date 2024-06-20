@@ -63,7 +63,7 @@ export const DemoComparisons: FunctionComponent = () => (
                         title="Learn more"
                     >
                         Learn more
-                        <KeyboardArrowRightIcon className="ml-3 inline" />
+                        <KeyboardArrowRightIcon className="ml-3 inline icon" />
                     </Link>
                 </div>
             ))}

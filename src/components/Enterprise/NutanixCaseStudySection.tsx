@@ -44,7 +44,7 @@ export const NutanixCaseStudySection: FunctionComponent = () => (
                         className="btn btn-link btn-link-icon p-0 text-right font-semibold !-tracking-[0.25px] md:mx-0 md:text-left"
                     >
                         Read the case study
-                        <ChevronRightIcon />
+                        <ChevronRightIcon className='icon' />
                     </Link>
                 </div>
             </div>

@@ -14,7 +14,7 @@ export const Banner: FunctionComponent<{}> = () => (
                 className="btn btn-link-dark btn-link-icon !px-0 !py-0 leading-[22px]"
             >
                 See what's new
-                <ChevronRightIcon />
+                <ChevronRightIcon className='icon' />
             </Link>
         </div>
     </div>
