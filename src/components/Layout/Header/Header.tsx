@@ -89,7 +89,7 @@ const HEADER_CONTENT_THEME_CLASS: Record<
         item: 'text-white hover:bg-violet-600 focus:ring-white',
         menu: 'bg-gray-700 ring-white',
         menuItem: 'text-white',
-        menuItemActive: 'bg-gray-600',
+        menuItemActive: 'bg-violet-600',
         divider: 'border-white/25',
         button: 'text-gray-300 hover:bg-gray-700 hover:text-white focus:ring-white',
         panel: 'border-white/25',

@@ -106,7 +106,7 @@ export const Blockquote: FunctionComponent<{
             {link?.href &&
                 (link?.href.includes('http') ? (
                     <a
-                        className={classNames('mt-md flex', !border && center && 'justify-center')}
+                        className={classNames('mt-md flex btn-link btn-link-icon', !border && center && 'justify-center')}
                         href={link.href}
                         target="_blank"
                         rel="nofollow noreferrer"
@@ -116,19 +116,19 @@ export const Blockquote: FunctionComponent<{
                         data-button-type="cta"
                     >
                         {link.text}
-                        <ArrowRightIcon className="ml-3 inline" />
+                        <ArrowRightIcon className="ml-3 inline link-icon" />
                     </a>
                 ) : (
                     <Link
                         href={link.href}
-                        className={classNames('mt-md flex', !border && center && 'justify-center')}
+                        className={classNames('mt-md flex btn-link btn-link-icon', !border && center && 'justify-center')}
                         title={link.text}
                         data-button-style={buttonStyle.textWithArrow}
                         data-button-location={buttonLocation.body}
                         data-button-type="cta"
                     >
                         {link.text}
-                        <ArrowRightIcon className="ml-3 inline" />
+                        <ArrowRightIcon className="ml-3 inline link-icon" />
                     </Link>
                 ))}
         </blockquote>
