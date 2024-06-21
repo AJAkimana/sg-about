@@ -26,7 +26,7 @@ export const MeetWithProductExpertButton: React.FunctionComponent<{
     <Link
         href={requestInfo ? '/contact/request-info' : '/demo'}
         className={classNames(
-            'btn inline-flex items-center whitespace-nowrap',
+            'btn btn-link inline-flex items-center whitespace-nowrap',
             buttonClassName,
             chevron ? 'btn-link-icon' : '',
             size === 'lg' && 'py-xs'
@@ -36,6 +36,6 @@ export const MeetWithProductExpertButton: React.FunctionComponent<{
         data-button-location={buttonLocation}
         data-button-type="cta"
     >
-        {children} {chevron && <ChevronRightIcon className="icon ml-[3px]" />}
+        {children} {chevron && <ChevronRightIcon className="link-icon ml-[3px]" />}
     </Link>
 )

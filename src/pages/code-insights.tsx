@@ -298,7 +298,7 @@ const blogResourceItems = [
     },
 ]
 
-const CodeInsightsPage: FunctionComponent<TelemetryProps> = ({telemetryRecorder}) => (
+const CodeInsightsPage: FunctionComponent<TelemetryProps> = ({ telemetryRecorder }) => (
     <Layout
         meta={{
             title: 'Sourcegraph - Code Insights',
@@ -487,6 +487,7 @@ const CodeInsightsPage: FunctionComponent<TelemetryProps> = ({telemetryRecorder}
                 <a
                     href="https://sourcegraph.com/docs/code_insights"
                     title="Code Insights on docs."
+                    className="btn-link"
                     data-button-style={buttonStyle.text}
                     data-button-location={buttonLocation.body}
                     data-button-type="cta"

@@ -53,18 +53,10 @@ const CodySecurityAndLegal: NextPage = () => {
                         </p>
                         <p>
                             For information related to Cody features, usage, and administration, see the{' '}
-                            <Link className="btn-link" href="/cody">
-                                Cody product page
-                            </Link>{' '}
-                            and{' '}
-                            <Link className="btn-link" href="/cody/docs">
-                                Cody documentation
-                            </Link>
-                            . For general information about Sourcegraph security, including our SOC 2 report, visit the{' '}
-                            <Link className="btn-link" href="https://security.sourcegraph.com">
-                                Sourcegraph security portal
-                            </Link>
-                            .
+                            <Link href="/cody">Cody product page</Link>
+                            and <Link href="/cody/docs">Cody documentation</Link>. For general information about
+                            Sourcegraph security, including our SOC 2 report, visit the{' '}
+                            <Link href="https://security.sourcegraph.com">Sourcegraph security portal</Link>.
                         </p>
                         <h2>Architecture and data flow</h2>
                         <p>

@@ -123,7 +123,7 @@ export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({ telemetryRec
                             className="btn-link btn-link-icon font-semibold leading-[22.4px]"
                         >
                             Read how Nutanix used Code Search to mitigate Log4j vulnerabilities
-                            <ChevronRightIcon className="icon" />
+                            <ChevronRightIcon className="link-icon" />
                         </Link>
                     </div>
                 }
@@ -210,7 +210,7 @@ export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({ telemetryRec
                             className="btn-link btn-link-icon font-semibold leading-[22.4px]"
                         >
                             Read how Indeed uses Batch Changes to accelerate development
-                            <ChevronRightIcon className="icon" />
+                            <ChevronRightIcon className="link-icon" />
                         </Link>
                     </div>
                 }
@@ -240,7 +240,7 @@ export const CodeSearchPage: FunctionComponent<TelemetryProps> = ({ telemetryRec
                             href="/blog/announcing-code-insights"
                             className="btn-link btn-link-icon font-semibold leading-[22.4px]"
                         >
-                            Learn more about Code Insights <ChevronRightIcon className="icon" />
+                            Learn more about Code Insights <ChevronRightIcon className="link-icon" />
                         </Link>
                     </div>
                 }

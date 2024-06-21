@@ -80,8 +80,8 @@ export const CodyImageTab: FunctionComponent<{
                                         selectedContentIndex === index && !isLight,
                                     'rounded-[4px] border border-gray-200 bg-none text-[#0F111A] hover:bg-opacity-100':
                                         selectedContentIndex === index && isLight,
-                                    'btn-primary-dark': !isLight,
-                                    'btn-primary': isLight,
+                                    'btn-secondary-dark': !isLight,
+                                    'btn-secondary': isLight,
                                 })}
                                 type="button"
                             >

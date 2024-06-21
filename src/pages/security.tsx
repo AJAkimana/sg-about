@@ -34,7 +34,7 @@ const SecurityPage: FunctionComponent = () => (
                         data-button-style={buttonStyle.textWithArrow}
                     >
                         Contact our security team
-                        <KeyboardArrowRightIcon className="icon ml-3 inline" />
+                        <KeyboardArrowRightIcon className="link-icon ml-3 inline" />
                     </Link>
                 </div>
 
@@ -338,7 +338,7 @@ const SecurityPage: FunctionComponent = () => (
                                             data-button-style={buttonStyle.textWithArrow}
                                         >
                                             Go to Subprocessors
-                                            <KeyboardArrowRightIcon className="icon ml-3 inline" />
+                                            <KeyboardArrowRightIcon className="link-icon ml-3 inline" />
                                         </Link>
                                     </div>
                                 ),
