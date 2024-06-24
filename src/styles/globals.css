@@ -144,11 +144,11 @@
     }
 
     .btn-primary {
-        @apply bg-violet-700 text-whiteviolet hover:bg-violet-600 focus:rounded-[5px] focus:border-3 focus:border-violet-300 focus:bg-violet-700;
+        @apply bg-violet-700 text-gray-75 hover:bg-violet-600 focus:rounded-[5px] focus:border-3 focus:border-violet-300 focus:bg-violet-700;
     }
 
     .btn-primary-dark {
-        @apply rounded-[5px] bg-whiteviolet text-violet-700 hover:bg-[#C9C9C9] focus:rounded-[5px] focus:border-3 focus:border-violet-300 focus:bg-gray-200;
+        @apply rounded-[5px] bg-gray-75 text-violet-700 hover:bg-[#C9C9C9] focus:rounded-[5px] focus:border-3 focus:border-violet-300 focus:bg-gray-200;
     }
 
     .btn-secondary {
@@ -156,7 +156,7 @@
     }
 
     .btn-secondary-dark {
-        @apply rounded-[5px] border-1 border-whiteviolet bg-transparent text-whiteviolet hover:border-whiteviolet hover:bg-violet-600 focus:rounded-[5px] focus:border-3 focus:border-violet-300;
+        @apply rounded-[5px] border-1 border-gray-75 bg-transparent text-gray-75 hover:border-gray-75 hover:bg-violet-600 focus:rounded-[5px] focus:border-3 focus:border-violet-300;
     }
 
     .btn-link {
@@ -164,7 +164,7 @@
     }
 
     .btn-link-dark {
-        @apply link-transition text-whiteviolet hover:underline;
+        @apply link-transition text-gray-75 hover:underline;
     }
 
     .btn-link-icon {
