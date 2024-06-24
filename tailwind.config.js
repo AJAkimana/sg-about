@@ -6,6 +6,7 @@ const typography = require('@tailwindcss/typography')
 const dlsColors = {
   white: '#ffffff',
   black: '#000000',
+  whiteviolet: '#EBEBEB',
   gray: {
     50: '#F9FAFB',
     100: '#F5F7FB',
