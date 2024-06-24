@@ -14,7 +14,9 @@ export const MeetWithProductExpertButton: React.FunctionComponent<{
     requestInfo?: boolean
     children?: string
     buttonClassName?: string
+    id?: string
 }> = ({
+    id,
     buttonLocation,
     dark = false,
     chevron = false,
@@ -24,12 +26,13 @@ export const MeetWithProductExpertButton: React.FunctionComponent<{
     children = requestInfo ? 'Contact sales' : 'Talk to an engineer',
 }) => (
     <Link
+        id={id}
         href={requestInfo ? '/contact/request-info' : '/demo'}
         className={classNames(
             'btn btn-link inline-flex items-center whitespace-nowrap',
             buttonClassName,
             chevron ? 'btn-link-icon' : '',
-            size === 'lg' && 'py-xs'
+            size === 'lg' && 'py-4'
         )}
         title={children}
         data-button-style={buttonStyle.outline}

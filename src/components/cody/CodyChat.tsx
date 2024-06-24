@@ -46,7 +46,7 @@ export const CodyChat: FunctionComponent<CodyChatProps> = ({ isLight = false }) 
                             }
                         )}
                     >
-                        AI-powered chat for your code
+                        AI chat for code generation and explanation
                     </Heading>
                     <h3
                         className={classNames('m-0 text-left md:text-2xl', {
@@ -54,8 +54,7 @@ export const CodyChat: FunctionComponent<CodyChatProps> = ({ isLight = false }) 
                             'text-lg text-gray-200': !isLight,
                         })}
                     >
-                        Cody chat helps unblock you when you’re jumping into new projects, trying to understand legacy
-                        code, or taking on tricky problems.
+                        Generate code on demand using AI. Cody also unblocks you when you’re jumping into new projects or trying to understand legacy code.
                     </h3>
                 </div>
             </div>
@@ -75,7 +74,7 @@ export const CodyChat: FunctionComponent<CodyChatProps> = ({ isLight = false }) 
                                     isLight,
                             })}
                         >
-                            Cody can answer questions like:
+                            Cody answers your coding questions:
                         </p>
 
                         {answers.map(answer => (
@@ -100,7 +99,11 @@ export const CodyChat: FunctionComponent<CodyChatProps> = ({ isLight = false }) 
                             'md:-top-16 md:h-[522px] xl:-right-[20px]': !isLight,
                             'md:bottom-[34px] md:h-[478px] xl:-right-0': isLight,
                         })}
-                        src={isLight ? '/assets/cody/cody-chat-interface-light-v2.svg' : '/cody/cody-chat-interface-v2.png'}
+                        src={
+                            isLight
+                                ? '/assets/cody/cody-chat-interface-light-v2.svg'
+                                : '/cody/cody-chat-interface-v2.png'
+                        }
                         alt="Cody Chat interface"
                     />
                 </div>

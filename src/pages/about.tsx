@@ -175,7 +175,7 @@ const About: FunctionComponent = () => (
 
             <ContentSection>
                 <h2>Investors</h2>
-                <div className="mx-8 grid grid-cols-1 gap-lg md:grid-cols-3">
+                <div className="mx-8 grid grid-cols-1 gap-10 md:grid-cols-3">
                     {INVESTORS.map(investor => (
                         <div key={investor.image} className="max-w-xs">
                             <img src={investor.image} alt={investor.name} className="mx-0 my-1 w-full px-2 py-0" />

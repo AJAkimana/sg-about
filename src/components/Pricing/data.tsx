@@ -407,14 +407,14 @@ const FEATURE_INFO: Record<string, FeatureInfo> = {
     },
     proLLMchat: {
         label: 'Multiple LLM choices for chat',
-        description: 'GPT-4o, GPT-4 Turbo, Claude 3 (Opus, Sonnet, Haiku), Mixtral',
+        description: 'GPT-4o, GPT-4 Turbo, Gemini Flash and Pro, Mixtral, Claude 3 (Opus, Sonnet, Haiku)',
     },
     proLLMcommands: {
         label: 'Default LLMs for commands and autocomplete',
     },
     entLLMchoices: {
         label: 'Flexible LLM choices',
-        description: 'GPT-4o, GPT-4 Turbo, Claude 3 (Opus, Sonnet, Haiku)',
+        description: 'GPT-4o, GPT-4 Turbo, Gemini Flash and Pro, Claude 3 (Opus, Sonnet, Haiku)',
     },
     BringYourLLMKey: {
         label: 'Bring your own LLM key',
@@ -425,7 +425,7 @@ const FEATURE_INFO: Record<string, FeatureInfo> = {
     },
     codeIntelEntLLMchoices: {
         label: 'Flexible LLM choices',
-        description: 'GPT-4o, GPT-4 Turbo, Claude 3 (Opus, Sonnet, Haiku)',
+        description: 'GPT-4o, GPT-4 Turbo, Gemini Flash and Pro, Claude 3 (Opus, Sonnet, Haiku)',
     },
     codeIntelBringYourLLMKey: {
         label: 'Bring your own LLM key',
