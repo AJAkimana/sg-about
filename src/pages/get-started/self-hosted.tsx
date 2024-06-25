@@ -55,7 +55,7 @@ export const SelfHostedPage: FunctionComponent = () => (
                         data-button-type="cta"
                         href="https://info.sourcegraph.com/talk-to-a-developer"
                     >
-                        Talk to an engineer <ArrowRightIcon className="link-icon inline" />
+                        Talk to an engineer <ArrowRightIcon className="link-icon" />
                     </a>
                 </div>
             </div>

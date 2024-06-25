@@ -119,7 +119,7 @@ export const Blockquote: FunctionComponent<{
                         data-button-type="cta"
                     >
                         {link.text}
-                        <ArrowRightIcon className="link-icon ml-3 inline" />
+                        <ArrowRightIcon className="link-icon" />
                     </a>
                 ) : (
                     <Link
@@ -134,7 +134,7 @@ export const Blockquote: FunctionComponent<{
                         data-button-type="cta"
                     >
                         {link.text}
-                        <ArrowRightIcon className="link-icon ml-3 inline" />
+                        <ArrowRightIcon className="link-icon" />
                     </Link>
                 ))}
         </blockquote>

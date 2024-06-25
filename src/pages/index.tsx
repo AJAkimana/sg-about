@@ -264,7 +264,7 @@ const Home: FunctionComponent = () => {
                         className="btn btn-link btn-link-icon mx-6 mb-28 p-0 px-5 py-3 text-center font-semibold !-tracking-[0.25px] md:mx-0 md:mb-24 md:px-0 md:pb-0 md:pt-0 md:text-left"
                     >
                         Learn more about Code Search
-                        <ChevronRightIcon className="link-icon !mb-0 ml-[10px] inline" />
+                        <ChevronRightIcon className="link-icon" />
                     </Link>
                     <div className="sg-reviews flex flex-col gap-6 rounded-none px-6 py-[73px] text-white md:flex-row md:gap-16 md:rounded-2xl md:px-20 md:py-16">
                         <div className="flex flex-col gap-4 p-5 md:p-0">
@@ -284,7 +284,7 @@ const Home: FunctionComponent = () => {
                                 className="btn btn-link-dark btn-link-icon p-0"
                             >
                                 Read the case study
-                                <ChevronRightIcon className="link-icon !mb-0 ml-[10px] inline" />
+                                <ChevronRightIcon className="link-icon" />
                             </Link>
                         </div>
                     </div>
@@ -332,7 +332,7 @@ const Home: FunctionComponent = () => {
                                     )}
                                 >
                                     See pricing
-                                    {!isMobile && <ChevronRightIcon className="link-icon !mb-0 ml-[10px] inline" />}
+                                    {!isMobile && <ChevronRightIcon className="link-icon" />}
                                 </Link>
                             </div>
                         </div>

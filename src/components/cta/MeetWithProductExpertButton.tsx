@@ -39,6 +39,6 @@ export const MeetWithProductExpertButton: React.FunctionComponent<{
         data-button-location={buttonLocation}
         data-button-type="cta"
     >
-        {children} {chevron && <ChevronRightIcon className="link-icon ml-[3px]" />}
+        {children} {chevron && <ChevronRightIcon className="link-icon" />}
     </Link>
 )

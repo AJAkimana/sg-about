@@ -33,7 +33,7 @@ export const NineCaseStudySection: FunctionComponent = () => (
                     className="btn btn-link-dark btn-link-icon p-0 text-left  font-semibold !-tracking-[0.25px] md:text-center "
                 >
                     Read the case study
-                    <ChevronRightIcon className="link-icon !mb-0 ml-[10px] inline" />
+                    <ChevronRightIcon className="link-icon" />
                 </Link>
             </div>
         </div>

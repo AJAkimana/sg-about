@@ -50,7 +50,7 @@ const MoreCaseStudies: FunctionComponent = () => (
                                 titleClassName="text-lg w-[298px]"
                                 logoClassName={std.logoSize}
                                 study={std}
-                                icon={<ChevronRightIcon size={20} className="link-icon ml-1 inline" />}
+                                icon={<ChevronRightIcon size={20} className="link-icon" />}
                                 key={std.name}
                             />
                         </div>
