@@ -167,7 +167,7 @@ export const CaseStudyCard: FunctionComponent<{
                     data-button-style={buttonStyle.text}
                     data-button-location={buttonLocation.body}
                     data-button-type="cta"
-                    className={classNames('font-bold no-underline hover:text-violet-300', linkClassName)}
+                    className={classNames('btn-link btn-link-icon', linkClassName)}
                 >
                     {linkText}
                     {icon}
@@ -179,7 +179,7 @@ export const CaseStudyCard: FunctionComponent<{
                     data-button-style={buttonStyle.text}
                     data-button-location={buttonLocation.body}
                     data-button-type="cta"
-                    className={classNames('font-bold no-underline hover:text-violet-300', linkClassName)}
+                    className={classNames('btn-link btn-link-icon', linkClassName)}
                 >
                     {linkText}
                     {icon}
