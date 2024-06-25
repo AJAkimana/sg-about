@@ -153,8 +153,7 @@ const ExternalLink: FunctionComponent<ExternalLinkProps> = ({
     <Link
         href={plan === PLAN_PRO && !disablePlanParam ? `${link + '?pro=true'}` : `${link}`}
         className={classNames(
-            'hover:sign-in-button flex items-center justify-center px-4 py-2 font-normal hover:text-black md:h-12 md:px-6 md:text-base',
-            dark ? 'hover:btn-primary' : 'btn-secondary',
+            'sign-in-button flex items-center justify-center px-4 py-2 font-normal md:h-12 md:px-6 md:text-base',
             className
         )}
         onClick={handleOnClick}

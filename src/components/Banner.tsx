@@ -11,11 +11,11 @@ export const Banner: FunctionComponent<{}> = () => (
             <Link
                 href="https://discord.gg/nyFC7Gah?event=1252715837614461012"
                 title="Join us for a live Q&A session with the co-founders on Discord!"
-                className="btn btn-link-dark btn-link-icon bg-transparent !px-0 !py-0 leading-[22px] text-violet-300"
+                className="btn btn-link-dark btn-link-icon !px-0 !py-0 leading-[22px]"
                 target="_blank"
             >
                 RSVP in Discord
-                <ChevronRightIcon className="!mb-0 ml-[6px] inline" />
+                <ChevronRightIcon className="link-icon" />
             </Link>
         </div>
     </div>

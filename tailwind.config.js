@@ -32,6 +32,7 @@ const dlsColors = {
     500: '#C22626',
   },
   lemon: {
+    50: '#C9C9C9',
     100: '#FFFCB1',
     200: '#FFF2CF',
     300: '#FFDB45',

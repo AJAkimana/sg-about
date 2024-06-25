@@ -20,8 +20,8 @@ const SecurityPage: FunctionComponent = () => (
             <div className="py-10 px-6 text-center">
                 <h1 className="mb-4">Security at Sourcegraph</h1>
                 <h2 className="text-gray-500">
-                    We know that source code is one of your most sensitive assets. Every component of Sourcegraph
-                    was designed with security in mind.
+                    We know that source code is one of your most sensitive assets. Every component of Sourcegraph was
+                    designed with security in mind.
                 </h2>
 
                 <Link
@@ -35,10 +35,7 @@ const SecurityPage: FunctionComponent = () => (
                 </Link>
             </div>
 
-            <ContentSection
-                parentClassName="md:pt-6 pt-6 max-w-[846px] flex justify-center mx-auto"
-                className="w-full"
-            >
+            <ContentSection parentClassName="md:pt-6 pt-6 max-w-[846px] flex justify-center mx-auto" className="w-full">
                 <Tabs
                     tabs={[
                         {
@@ -51,8 +48,8 @@ const SecurityPage: FunctionComponent = () => (
                                     <h4 className="mt-6">Infrastructure</h4>
                                     <ul className="mt-4 ml-5 space-y-1.5 text-gray-500">
                                         <li>
-                                            All infrastructure is hosted on Google Cloud Platform and managed
-                                            through Terraform.
+                                            All infrastructure is hosted on Google Cloud Platform and managed through
+                                            Terraform.
                                         </li>
                                         <li>
                                             Customer instances are provisioned in fully segregated GCP environments,
@@ -63,18 +60,18 @@ const SecurityPage: FunctionComponent = () => (
                                             transport from code host to cloud environment.
                                         </li>
                                         <li>
-                                            Sourcegraph leverages permission management tools for just-in-time
-                                            access and group based permissions to enforce least privilege access
-                                            across our cloud infrastructure.
+                                            Sourcegraph leverages permission management tools for just-in-time access
+                                            and group based permissions to enforce least privilege access across our
+                                            cloud infrastructure.
                                         </li>
                                         <li>
-                                            Domains are managed through Cloudflare and use its security
-                                            capabilities, like Web Application Firewall and Rate Limiting.
+                                            Domains are managed through Cloudflare and use its security capabilities,
+                                            like Web Application Firewall and Rate Limiting.
                                         </li>
                                         <li>
                                             External access to production systems is restricted by firewall. Secrets
-                                            that grant access to compute resources are stored only on encrypted
-                                            local drives or a secret management service.
+                                            that grant access to compute resources are stored only on encrypted local
+                                            drives or a secret management service.
                                         </li>
                                         <li>
                                             Instances are updated monthly, and are actively maintained to keep the
@@ -96,14 +93,14 @@ const SecurityPage: FunctionComponent = () => (
                                     <h5 className="mt-6">Monitoring and Incident Response</h5>
                                     <ul className="mt-4 ml-5 space-y-1.5 text-gray-500">
                                         <li>
-                                            Our operations team monitors service availability 24x7x365. They
-                                            investigate alerts and potential attacks 24x7x365, triaging and
-                                            responding when necessary.
+                                            Our operations team monitors service availability 24x7x365. They investigate
+                                            alerts and potential attacks 24x7x365, triaging and responding when
+                                            necessary.
                                         </li>
                                         <li>
-                                            We only log information crucial for security and support. Only
-                                            restricted personnel have access to user data. Logs are stored in GCP
-                                            and the information is retained for up to 365 days. Find out more in our{' '}
+                                            We only log information crucial for security and support. Only restricted
+                                            personnel have access to user data. Logs are stored in GCP and the
+                                            information is retained for up to 365 days. Find out more in our{' '}
                                             <Link
                                                 href="/terms/privacy"
                                                 title="Privacy Policy"
@@ -113,8 +110,8 @@ const SecurityPage: FunctionComponent = () => (
                                             </Link>
                                         </li>
                                         <li>
-                                            Service, application, and access logs are stored centrally by
-                                            Sourcegraph and monitored.You can find more details in our{' '}
+                                            Service, application, and access logs are stored centrally by Sourcegraph
+                                            and monitored.You can find more details in our{' '}
                                             <Link
                                                 href="https://handbook.sourcegraph.com/departments/security/security-incident-response/"
                                                 title="Incident Response Policy"
@@ -124,20 +121,20 @@ const SecurityPage: FunctionComponent = () => (
                                             </Link>
                                         </li>
                                         <li>
-                                            Only restricted Sourcegraph employees have access to a customer's
-                                            instance, strictly for support and maintenance purposes. Access is
-                                            logged and monitored.
+                                            Only restricted Sourcegraph employees have access to a customer's instance,
+                                            strictly for support and maintenance purposes. Access is logged and
+                                            monitored.
                                         </li>
                                         <li>
-                                            Sourcegraph employees access the instance through secure SSO means,
-                                            ensuring MFA protections and more.
+                                            Sourcegraph employees access the instance through secure SSO means, ensuring
+                                            MFA protections and more.
                                         </li>
                                     </ul>
 
                                     <h3 className="mt-10">Sourcegraph self-hosted</h3>
                                     <p className="mb-0 mt-4 text-gray-500">
-                                        Sourcegraph self-hosted gives you the most control over deployment and
-                                        security options.
+                                        Sourcegraph self-hosted gives you the most control over deployment and security
+                                        options.
                                     </p>
                                     <ul className="ml-5 space-y-1.5 text-gray-500">
                                         <li>
@@ -145,10 +142,10 @@ const SecurityPage: FunctionComponent = () => (
                                             servers. Sourcegraph employees have no access to customer code.
                                         </li>
                                         <li>
-                                            Other than the email address of the initial installer (who we may
-                                            contact regarding sales, product updates, security updates, and policy
-                                            updates), self-hosted Sourcegraph instances do not send any personal
-                                            data to other servers. Learn more in our{' '}
+                                            Other than the email address of the initial installer (who we may contact
+                                            regarding sales, product updates, security updates, and policy updates),
+                                            self-hosted Sourcegraph instances do not send any personal data to other
+                                            servers. Learn more in our{' '}
                                             <Link
                                                 href="https://sourcegraph.com/docs/admin/pings"
                                                 title="pings documentation"
@@ -159,10 +156,10 @@ const SecurityPage: FunctionComponent = () => (
                                             </Link>
                                         </li>
                                         <li>
-                                            When self-hosting Sourcegraph, all application logs are stored locally
-                                            and never shared with Sourcegraph (the company). Sourcegraph employees
-                                            and contractors never have access to your Sourcegraph instance or its
-                                            data unless explicitly shared for troubleshooting purposes.
+                                            When self-hosting Sourcegraph, all application logs are stored locally and
+                                            never shared with Sourcegraph (the company). Sourcegraph employees and
+                                            contractors never have access to your Sourcegraph instance or its data
+                                            unless explicitly shared for troubleshooting purposes.
                                         </li>
                                         <li>
                                             Authentication via SAML, OAuth, HTTP Proxy auth, and OpenID Connect is
@@ -182,8 +179,7 @@ const SecurityPage: FunctionComponent = () => (
                                             explicitly set repository permissions.
                                         </li>
                                         <li>
-                                            Encryption at-rest and in-transit are configurable and highly
-                                            recommended.
+                                            Encryption at-rest and in-transit are configurable and highly recommended.
                                         </li>
                                     </ul>
 
@@ -192,19 +188,18 @@ const SecurityPage: FunctionComponent = () => (
                                     </h3>
                                     <ul className="mt-4 ml-5 space-y-1.5 text-gray-500">
                                         <li>
-                                            For these products, Sourcegraph (the company) handles the security of
-                                            the applications, the systems they run on, and the environments those
-                                            systems are hosted within.
+                                            For these products, Sourcegraph (the company) handles the security of the
+                                            applications, the systems they run on, and the environments those systems
+                                            are hosted within.
                                         </li>
                                         <li>
-                                            As a customer you are responsible for the proper management of
-                                            information on your account, ensuring that access tokens are properly
-                                            handled, and ensuring that code host connections and linked repositories
-                                            are correctly configured. You control users, access to your data, and
-                                            what extensions you install and trust. Finally, you are responsible for
-                                            ensuring your company is meeting compliance requirements and have
-                                            awareness of the impact the previous items can have on the
-                                            confidentiality of your code.
+                                            As a customer you are responsible for the proper management of information
+                                            on your account, ensuring that access tokens are properly handled, and
+                                            ensuring that code host connections and linked repositories are correctly
+                                            configured. You control users, access to your data, and what extensions you
+                                            install and trust. Finally, you are responsible for ensuring your company is
+                                            meeting compliance requirements and have awareness of the impact the
+                                            previous items can have on the confidentiality of your code.
                                         </li>
                                     </ul>
 
@@ -212,28 +207,26 @@ const SecurityPage: FunctionComponent = () => (
                                     <h5 className="mt-4">Development</h5>
                                     <ul className="mt-4 ml-5 space-y-1.5 text-gray-500">
                                         <li>
-                                            Access to all internal systems is protected by multi-factor
-                                            authentication. Access is restricted to those who require it to perform
-                                            their job, and is regularly reviewed and revoked upon termination or
-                                            when no longer needed.
+                                            Access to all internal systems is protected by multi-factor authentication.
+                                            Access is restricted to those who require it to perform their job, and is
+                                            regularly reviewed and revoked upon termination or when no longer needed.
                                         </li>
                                         <li>
                                             Code reviews are mandatory for all code changes to our product.
-                                            Security-sensitive changes are additionally reviewed by the security
-                                            team before being released.
+                                            Security-sensitive changes are additionally reviewed by the security team
+                                            before being released.
                                         </li>
                                         <li>
-                                            Furthermore, internally, we use our own product to provide critical
-                                            context during code reviews (such as identifying dependencies of
-                                            modified code).
+                                            Furthermore, internally, we use our own product to provide critical context
+                                            during code reviews (such as identifying dependencies of modified code).
                                         </li>
                                         <li>
                                             End-to-end tests to validate authentication and other critical workflows
                                             (such as authorization and authentication).
                                         </li>
                                         <li>
-                                            We do not store sensitive keys and passwords in our code, instead
-                                            relying on a secure secret vault.
+                                            We do not store sensitive keys and passwords in our code, instead relying on
+                                            a secure secret vault.
                                         </li>
                                         <li>Our software components are monitored for CVEs.</li>
                                     </ul>
@@ -241,12 +234,10 @@ const SecurityPage: FunctionComponent = () => (
                                     <h5 className="mt-6">Code Security</h5>
                                     <ul className="mt-4 ml-5 space-y-1.5 text-gray-500">
                                         <li>
-                                            We employ various tools and processes to ensure Sourcegraph’s code
-                                            remains secure.
+                                            We employ various tools and processes to ensure Sourcegraph’s code remains
+                                            secure.
                                         </li>
-                                        <li>
-                                            Containers are scanned for CVEs using GCP provider-specific tooling.
-                                        </li>
+                                        <li>Containers are scanned for CVEs using GCP provider-specific tooling.</li>
                                         <li>Code coverage tools are used to ensure unit test coverage.</li>
                                         <li>3rd party penetration tests are conducted annually.</li>
                                         <li>Internal audits of our code and systems are run regularly.</li>
@@ -260,8 +251,8 @@ const SecurityPage: FunctionComponent = () => (
                                         </li>
                                         <li>
                                             We publish signatures and Software Bill-of-Materials (SBOM) for our
-                                            container images, allowing customers to verify the security of our
-                                            products for themselves.
+                                            container images, allowing customers to verify the security of our products
+                                            for themselves.
                                         </li>
                                     </ul>
 
@@ -288,8 +279,8 @@ const SecurityPage: FunctionComponent = () => (
                                 <div>
                                     <h3 className="my-4">Trust & Compliance</h3>
                                     <p className="text-lg text-gray-500">
-                                        For details on our information security practices or to request a copy of
-                                        our SOC 2 Report, please visit our Security Trust Portal.
+                                        For details on our information security practices or to request a copy of our
+                                        SOC 2 Report, please visit our Security Trust Portal.
                                     </p>
                                     <Link
                                         href="https://security.sourcegraph.com/"
@@ -326,11 +317,11 @@ const SecurityPage: FunctionComponent = () => (
                                 <div>
                                     <h3 className="my-4">Program</h3>
                                     <p className="mb-8 text-lg text-gray-500">
-                                        Sourcegraph hosts a private bug bounty program on HackerOne. If you believe
-                                        that you have found a vulnerability related to Sourcegraph, please reach out
-                                        to security@sourcegraph.com with your HackerOne username. Sourcegraph will
-                                        add you to the platform, where you can make a report, which will be
-                                        processed according to the terms of our bug bounty policy.
+                                        Sourcegraph hosts a private bug bounty program on HackerOne. If you believe that
+                                        you have found a vulnerability related to Sourcegraph, please reach out to
+                                        security@sourcegraph.com with your HackerOne username. Sourcegraph will add you
+                                        to the platform, where you can make a report, which will be processed according
+                                        to the terms of our bug bounty policy.
                                     </p>
                                     <Link
                                         href="mailto:security@sourcegraph.com"
